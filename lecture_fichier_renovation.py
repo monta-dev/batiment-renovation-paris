@@ -872,3 +872,60 @@ print("\nRépartition par classe énergétique :")
 print(stats_energie.to_string(index=False))
 #-----------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------
+
+
+
+
+
+#-----------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# ======================================================
+# 1) Chargement des données
+# ======================================================
+df = pd.read_csv("dpe-75(3).csv", sep=",")
+
+# ======================================================
+# 2) Nettoyage et préparation des données
+# ======================================================
+# On garde uniquement les valeurs non nulles
+df_clean = df.dropna(subset=["tr002_type_batiment_libelle"])
+
+# Comptage du nombre de bâtiments par type
+stats_batiment = (
+    df_clean.groupby("tr002_type_batiment_libelle")
+    .size()
+    .reset_index(name="Nb_batiments")
+)
+
+# ======================================================
+# 3) Affichage graphique
+# ======================================================
+plt.figure(figsize=(8, 5))
+plt.bar(
+    stats_batiment["tr002_type_batiment_libelle"],
+    stats_batiment["Nb_batiments"]
+)
+
+plt.xlabel("Type de bâtiment")
+plt.ylabel("Nombre")
+plt.title("Nombre de logements et de maisons (DPE Paris)")
+plt.grid(axis="y", linestyle="--", alpha=0.7)
+
+# Affichage des valeurs au-dessus des barres
+for i, value in enumerate(stats_batiment["Nb_batiments"]):
+    plt.text(i, value, str(value), ha="center", va="bottom")
+
+plt.show()
+
+# ======================================================
+# 4) Affichage du résultat dans la console
+# ======================================================
+print("\nNombre de logements / maisons :")
+print(stats_batiment.to_string(index=False))
+
+#-----------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------
