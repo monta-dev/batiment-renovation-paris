@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,8 +8,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>RenovateEnergy - Rénovez votre maison, illuminez votre avenir</title>
 
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+	
+    
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Inter:wght@400&display=swap"
@@ -21,18 +24,18 @@
         <header class="home-header">
             <div class="home-header-container">
                 <nav class="home-nav">
-                    <a class="home-brand" href="home.html">
+                    <a class="home-brand" href="{% url 'home' %}">
                         <span class="material-symbols-outlined home-logo">energy_savings_leaf</span>
                         <span class="home-brand-text">RenovateEnergy</span>
                     </a>
                     <div class="home-nav-links">
-                        <a class="home-nav-link" href="home.html">Accueil</a>
-                        <a class="home-nav-link" href="about.html">À propos</a>
-                        <a class="home-nav-link" href="contact.html">Contact</a>
+                        <a class="home-nav-link" href="{% url 'home' %}">Accueil</a>
+                        <a class="home-nav-link" href="{% url 'about' %}">À propos</a>
+                        <a class="home-nav-link" href="{% url 'contact' %}">Contact</a>
                     </div>
                     <div class="home-nav-actions">
-                        <a href="login.html" class="home-btn home-btn-secondary">Connexion</a>
-                        <a href="login.html" class="home-btn home-btn-primary">Inscription</a>
+                        <a href="{% url 'login' %}" class="home-btn home-btn-secondary">Connexion</a>
+                        <a href="{% url 'login' %}" class="home-btn home-btn-primary">Inscription</a>
                     </div>
                 </nav>
             </div>
@@ -50,7 +53,7 @@
                             <h1 class="home-hero-title">Rénovez votre maison, illuminez votre avenir.</h1>
                             <p class="home-hero-description">Analysez, planifiez et financez vos rénovations
                                 énergétiques avec notre plateforme intuitive.</p>
-                            <a href="dashboard.html" class="home-hero-cta">Lancer l'Analyse</a>
+                            <a href="{% url 'dashboard' %}" class="home-hero-cta">Lancer l'Analyse</a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +61,7 @@
                 <!-- 3 Key Features Cards -->
                 <div class="home-features">
                     <div class="home-features-grid">
-                        <a class="home-feature-card" href="dashboard.html">
+                        <a class="home-feature-card" href="{% url 'dashboard' %}">
                             <div class="home-feature-bg home-feature-bg-lavender"></div>
                             <div class="home-feature-content">
                                 <div class="home-feature-icon-wrapper home-feature-icon-lavender">
@@ -68,7 +71,7 @@
                                 <p class="home-feature-description">Visualisez les projets de rénovation terminés.</p>
                             </div>
                         </a>
-                        <a class="home-feature-card" href="dashboard.html">
+                        <a class="home-feature-card" href="{% url 'dashboard' %}">
                             <div class="home-feature-bg home-feature-bg-pink"></div>
                             <div class="home-feature-content">
                                 <div class="home-feature-icon-wrapper home-feature-icon-pink">
@@ -79,7 +82,7 @@
                                     réalisés.</p>
                             </div>
                         </a>
-                        <a class="home-feature-card" href="dashboard.html">
+                        <a class="home-feature-card" href="{% url 'dashboard' %}">
                             <div class="home-feature-bg home-feature-bg-blue"></div>
                             <div class="home-feature-content">
                                 <div class="home-feature-icon-wrapper home-feature-icon-blue">
@@ -303,9 +306,9 @@
                     <div class="home-footer-section">
                         <h4 class="home-footer-title">Navigation</h4>
                         <ul class="home-footer-links">
-                            <li><a class="home-footer-link" href="home.html">Accueil</a></li>
-                            <li><a class="home-footer-link" href="about.html">À propos</a></li>
-                            <li><a class="home-footer-link" href="contact.html">Contact</a></li>
+                            <li><a class="home-footer-link" href="{% url 'home' %}">Accueil</a></li>
+                            <li><a class="home-footer-link" href="{% url 'about' %}">À propos</a></li>
+                            <li><a class="home-footer-link" href="{% url 'contact' %}">Contact</a></li>
                         </ul>
                     </div>
                     <div class="home-footer-section">

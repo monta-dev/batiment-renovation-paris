@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,17 +7,18 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Contact - RenovateEnergy</title>
 
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/contact.css">
+  
 </head>
 
 <body class="contact-body">
 
     <header class="contact-header">
         <div class="contact-header-inner">
-            <a href="home.html" class="contact-brand">
+            <a href="{% url 'home' %}" class="contact-brand">
                 <div class="contact-logo">
                     <span class="material-symbols-outlined">energy_savings_leaf</span>
                 </div>
@@ -24,14 +26,14 @@
             </a>
 
             <nav class="contact-nav">
-                <a href="home.html">Accueil</a>
-                <a href="about.html">À propos</a>
-                <a href="contact.html" class="active">Contact</a>
+                <a href="{% url 'home' %}">Accueil</a>
+                <a href="{% url 'about' %}">À propos</a>
+                <a href="{% url 'contact' %}" class="active">Contact</a>
             </nav>
 
             <div class="contact-actions">
-                <a href="login.html" class="contact-btn-secondary">Connexion</a>
-                <a href="login.html" class="contact-btn-primary">Inscription</a>
+                <a href="{% url 'login' %}" class="contact-btn-secondary">Connexion</a>
+                <a href="{% url 'login' %}" class="contact-btn-primary">Inscription</a>
             </div>
         </div>
     </header>
