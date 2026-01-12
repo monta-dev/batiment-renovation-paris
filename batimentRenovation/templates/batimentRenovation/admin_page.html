@@ -1,0 +1,455 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<title>RenovEnergy - Admin Portal</title>
+	<link rel="stylesheet" href="{% static 'css/admin_page.css' %}" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+		rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+		rel="stylesheet" />
+	<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+	<script id="tailwind-config">
+		tailwind.config = {
+			darkMode: "class",
+			theme: {
+				extend: {
+					colors: {
+						"primary": "#638fe9",
+						"background-light": "#EEF2F6",
+						"background-dark": "#111621",
+						"neu-base": "#EEF2F6",
+						"neu-shadow-dark": "#d1d9e6",
+						"neu-shadow-light": "#ffffff",
+					},
+					fontFamily: {
+						"display": ["Inter", "sans-serif"],
+						"sans": ["Inter", "sans-serif"],
+					},
+					borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+				},
+			},
+		}
+	</script>
+</head>
+
+<body class="text-slate-600 antialiased font-display h-screen flex flex-col overflow-hidden">
+	<!-- ROOT CONTAINER -->
+	<div class="flex h-full w-full max-w-[1600px] mx-auto bg-neu-base shadow-2xl relative">
+		<!-- SIDEBAR -->
+		<aside class="w-72 hidden md:flex flex-col h-full z-20 relative">
+			<div class="h-full flex flex-col justify-between p-6">
+				<div class="flex flex-col gap-8">
+					<!-- Logo Area -->
+					<div class="flex items-center gap-4 px-2">
+						<div
+							class="neu-card flex items-center justify-center size-12 rounded-xl !shadow-[5px_5px_10px_#d1d9e6,-5px_-5px_10px_#ffffff]">
+							<span class="material-symbols-outlined text-primary text-3xl">energy_savings_leaf</span>
+						</div>
+						<div class="flex flex-col">
+							<h1 class="text-slate-800 text-lg font-bold leading-none tracking-tight">RenovateEnergy</h1>
+							<p class="text-slate-400 text-xs font-medium mt-1">Admin Portal</p>
+						</div>
+					</div>
+					<!-- Navigation -->
+					<nav class="flex flex-col gap-3">
+						<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 text-slate-500 hover:text-primary hover:bg-[#e4e9f2]"
+							href="dashboard.html">
+							<span class="material-symbols-outlined" style="font-size: 24px;">dashboard</span>
+							<span class="text-sm font-semibold">Dashboard</span>
+						</a>
+						<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 text-slate-500 hover:text-primary hover:bg-[#e4e9f2]"
+							href="#">
+							<span class="material-symbols-outlined" style="font-size: 24px;">apartment</span>
+							<span class="text-sm font-semibold">Bâtiments Rénovés</span>
+						</a>
+						<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 text-slate-500 hover:text-primary hover:bg-[#e4e9f2]"
+							href="#">
+							<span class="material-symbols-outlined" style="font-size: 24px;">construction</span>
+							<span class="text-sm font-semibold">Types de Rénovation</span>
+						</a>
+						<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 text-slate-500 hover:text-primary hover:bg-[#e4e9f2]"
+							href="#">
+							<span class="material-symbols-outlined" style="font-size: 24px;">description</span>
+							<span class="text-sm font-semibold">Classe DPE</span>
+						</a>
+						<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 text-slate-500 hover:text-primary hover:bg-[#e4e9f2]"
+							href="#">
+							<span class="material-symbols-outlined" style="font-size: 24px;">settings</span>
+							<span class="text-sm font-semibold">Paramètres</span>
+						</a>
+						<!-- Active Item: Admin -->
+						<a class="neu-card !border-none flex items-center gap-4 px-4 py-3 rounded-xl text-primary relative overflow-hidden group"
+							href="#">
+							<div class="absolute inset-0 bg-primary/5 opacity-50"></div>
+							<span class="material-symbols-outlined filled"
+								style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+							<span class="text-sm font-bold">Admin</span>
+							<div class="ml-auto size-2 bg-primary rounded-full shadow-[0_0_8px_#638fe9]"></div>
+						</a>
+					</nav>
+				</div>
+				<!-- Logout / Bottom Action -->
+				<div class="mt-auto">
+					<a href="login.html"
+						class="flex w-full items-center gap-3 px-4 py-3 rounded-xl text-slate-500 hover:text-red-500 transition-colors">
+						<span class="material-symbols-outlined">logout</span>
+						<span class="text-sm font-medium">Déconnexion</span>
+					</a>
+				</div>
+			</div>
+			<!-- Sidebar Separator (Neumorphic Indent) -->
+			<div
+				class="absolute right-0 top-6 bottom-6 w-px bg-gradient-to-b from-transparent via-[#d1d9e6] to-transparent">
+			</div>
+		</aside>
+		<!-- MAIN CONTENT AREA -->
+		<main class="flex-1 flex flex-col h-full overflow-hidden relative z-10">
+			<!-- TOPBAR -->
+			<header class="h-20 flex items-center justify-between px-8 py-4 shrink-0">
+				<!-- Mobile Menu Trigger -->
+				<button class="md:hidden neu-btn p-2 rounded-lg text-slate-600 mr-4">
+					<span class="material-symbols-outlined">menu</span>
+				</button>
+				<h2 class="text-2xl font-bold text-slate-800 tracking-tight hidden md:block">Administration</h2>
+				<div class="flex items-center gap-6 ml-auto">
+					<!-- Search Bar -->
+					<div class="hidden md:flex items-center h-10 w-64 rounded-xl neu-input px-3 gap-2">
+						<span class="material-symbols-outlined text-slate-400 text-[20px]">search</span>
+						<input
+							class="bg-transparent border-none focus:ring-0 text-sm w-full text-slate-600 placeholder:text-slate-400 p-0 h-full"
+							placeholder="Rechercher..." type="text" />
+					</div>
+					<!-- Notifications -->
+					<button class="neu-btn size-10 flex items-center justify-center rounded-xl text-slate-600 relative">
+						<span class="material-symbols-outlined text-[22px]">notifications</span>
+						<span
+							class="absolute top-2.5 right-2.5 size-2 bg-red-400 rounded-full border border-[#EEF2F6]"></span>
+					</button>
+					<!-- Profile -->
+					<div class="flex items-center gap-3 pl-2">
+						<div class="w-10 h-10 rounded-full neu-card p-0.5 overflow-hidden flex items-center justify-center"
+							data-alt="User profile picture">
+							<img alt="Profile" class="rounded-full w-full h-full object-cover"
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmyPaqkPZDv5spDv0HhNKJpMk-FEkxWbMonNJVduoKiNC4-ypZZcntvaEqGWYUpPk3ng0rzH0SC2nES9GxY6HYYHdciH3zK5NMrmr2N2UeAfq8iSWM9DAk3GLu7cyLOAK5FKhI8ugPpkaf9Kxdog4HF6MWYo1sd-jXfvq32eUZCa6bduNglfGxx--pnQdLmmOw0akvHMcvoKI9ePl22NIOeDEm-sn6FkAzE8xtxPehmrVUJzkL3Yd70JQQ-DQQaUXKgdxs5p0attdp" />
+						</div>
+						<div class="hidden lg:flex flex-col">
+							<span class="text-sm font-bold text-slate-800">Thomas R.</span>
+							<span class="text-xs text-slate-500">Super Admin</span>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- PAGE CONTENT SCROLLABLE -->
+			<div class="flex-1 overflow-y-auto px-8 pb-8 pt-2">
+				<div class="max-w-[1200px] mx-auto flex flex-col gap-8">
+					<!-- Page Header -->
+					<div class="flex flex-col gap-1">
+						<h1 class="text-3xl font-bold text-slate-800 tracking-tight">Administration du Système</h1>
+						<p class="text-slate-500">Gérez vos utilisateurs, contenus et paramètres globaux.</p>
+					</div>
+					<!-- GRID LAYOUT -->
+					<div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+						<!-- SECTION: USER MANAGEMENT (Full Width on Mobile/Tablet, Spans 2 cols on Large) -->
+						<div class="xl:col-span-2 neu-card p-6 flex flex-col gap-6">
+							<div class="flex flex-wrap items-center justify-between gap-4">
+								<div class="flex items-center gap-3">
+									<div
+										class="size-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+										<span class="material-symbols-outlined">group</span>
+									</div>
+									<h3 class="text-lg font-bold text-slate-700">Gestion des Utilisateurs</h3>
+								</div>
+								<div class="flex gap-3">
+									<button
+										class="neu-btn px-4 py-2 rounded-xl flex items-center gap-2 text-slate-600 text-sm font-medium">
+										<span class="material-symbols-outlined text-[18px]">filter_list</span>
+										Filtrer
+									</button>
+									<button
+										class="neu-btn-primary px-4 py-2 rounded-xl flex items-center gap-2 text-sm font-bold shadow-lg shadow-primary/20">
+										<span class="material-symbols-outlined text-[18px]">person_add</span>
+										Ajouter
+									</button>
+								</div>
+							</div>
+							<!-- User Table -->
+							<div class="overflow-x-auto rounded-xl">
+								<table class="w-full text-left border-collapse">
+									<thead>
+										<tr
+											class="text-xs uppercase text-slate-400 font-semibold border-b border-slate-200/50">
+											<th class="px-4 py-3 min-w-[200px]">Utilisateur</th>
+											<th class="px-4 py-3">Rôle</th>
+											<th class="px-4 py-3">Statut</th>
+											<th class="px-4 py-3 min-w-[150px]">Dernière connexion</th>
+											<th class="px-4 py-3 text-right">Actions</th>
+										</tr>
+									</thead>
+									<tbody class="text-sm">
+										<!-- Row 1 -->
+										<tr
+											class="group hover:bg-white/40 transition-colors border-b border-transparent hover:border-slate-200/30">
+											<td class="px-4 py-4">
+												<div class="flex items-center gap-3">
+													<div class="size-8 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white text-xs font-bold"
+														data-alt="Avatar abstract gradient">JD</div>
+													<div class="flex flex-col">
+														<span class="font-semibold text-slate-700">Jean Dupont</span>
+														<span class="text-xs text-slate-400">jean@renov.com</span>
+													</div>
+												</div>
+											</td>
+											<td class="px-4 py-4">
+												<span
+													class="px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-600 shadow-sm">Admin</span>
+											</td>
+											<td class="px-4 py-4">
+												<div class="flex items-center gap-2">
+													<span
+														class="size-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+													<span class="text-emerald-600 font-medium text-xs">Actif</span>
+												</div>
+											</td>
+											<td class="px-4 py-4 text-slate-500">Aujourd'hui, 09:42</td>
+											<td class="px-4 py-4 text-right">
+												<button
+													class="neu-btn size-8 inline-flex items-center justify-center rounded-lg text-slate-400 hover:text-primary mx-1">
+													<span class="material-symbols-outlined text-[18px]">edit</span>
+												</button>
+												<button
+													class="neu-btn size-8 inline-flex items-center justify-center rounded-lg text-slate-400 hover:text-red-500 mx-1">
+													<span class="material-symbols-outlined text-[18px]">delete</span>
+												</button>
+											</td>
+										</tr>
+										<!-- Row 2 -->
+										<tr
+											class="group hover:bg-white/40 transition-colors border-b border-transparent hover:border-slate-200/30">
+											<td class="px-4 py-4">
+												<div class="flex items-center gap-3">
+													<div class="size-8 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center text-white text-xs font-bold"
+														data-alt="Avatar abstract gradient">SL</div>
+													<div class="flex flex-col">
+														<span class="font-semibold text-slate-700">Sophie Lambert</span>
+														<span class="text-xs text-slate-400">sophie@renov.com</span>
+													</div>
+												</div>
+											</td>
+											<td class="px-4 py-4">
+												<span
+													class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-600 shadow-sm">Éditeur</span>
+											</td>
+											<td class="px-4 py-4">
+												<div class="flex items-center gap-2">
+													<span
+														class="size-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+													<span class="text-emerald-600 font-medium text-xs">Actif</span>
+												</div>
+											</td>
+											<td class="px-4 py-4 text-slate-500">Hier, 14:20</td>
+											<td class="px-4 py-4 text-right">
+												<button
+													class="neu-btn size-8 inline-flex items-center justify-center rounded-lg text-slate-400 hover:text-primary mx-1">
+													<span class="material-symbols-outlined text-[18px]">edit</span>
+												</button>
+												<button
+													class="neu-btn size-8 inline-flex items-center justify-center rounded-lg text-slate-400 hover:text-red-500 mx-1">
+													<span class="material-symbols-outlined text-[18px]">delete</span>
+												</button>
+											</td>
+										</tr>
+										<!-- Row 3 -->
+										<tr class="group hover:bg-white/40 transition-colors">
+											<td class="px-4 py-4">
+												<div class="flex items-center gap-3">
+													<div class="size-8 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-white text-xs font-bold"
+														data-alt="Avatar abstract gradient">MB</div>
+													<div class="flex flex-col">
+														<span class="font-semibold text-slate-700">Marc Bernard</span>
+														<span class="text-xs text-slate-400">marc@client.com</span>
+													</div>
+												</div>
+											</td>
+											<td class="px-4 py-4">
+												<span
+													class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-600 shadow-sm">Lecteur</span>
+											</td>
+											<td class="px-4 py-4">
+												<div class="flex items-center gap-2">
+													<span class="size-2 rounded-full bg-slate-300"></span>
+													<span class="text-slate-500 font-medium text-xs">Inactif</span>
+												</div>
+											</td>
+											<td class="px-4 py-4 text-slate-500">Il y a 3 jours</td>
+											<td class="px-4 py-4 text-right">
+												<button
+													class="neu-btn size-8 inline-flex items-center justify-center rounded-lg text-slate-400 hover:text-primary mx-1">
+													<span class="material-symbols-outlined text-[18px]">edit</span>
+												</button>
+												<button
+													class="neu-btn size-8 inline-flex items-center justify-center rounded-lg text-slate-400 hover:text-red-500 mx-1">
+													<span class="material-symbols-outlined text-[18px]">delete</span>
+												</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- Pagination -->
+							<div class="flex justify-between items-center pt-2">
+								<span class="text-xs text-slate-400">Affichage de 3 sur 48 utilisateurs</span>
+								<div class="flex gap-2">
+									<button
+										class="neu-btn size-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-primary disabled:opacity-50">
+										<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+									</button>
+									<button
+										class="neu-btn size-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-primary">
+										<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+									</button>
+								</div>
+							</div>
+						</div>
+						<!-- SECTION: CONTENT MANAGEMENT -->
+						<div class="neu-card p-6 flex flex-col gap-6">
+							<div class="flex items-center justify-between">
+								<div class="flex items-center gap-3">
+									<div
+										class="size-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+										<span class="material-symbols-outlined">article</span>
+									</div>
+									<h3 class="text-lg font-bold text-slate-700">Contenus</h3>
+								</div>
+								<button class="neu-btn size-8 rounded-lg flex items-center justify-center text-primary">
+									<span class="material-symbols-outlined text-[20px]">add</span>
+								</button>
+							</div>
+							<div class="flex flex-col gap-4">
+								<!-- Content Item 1 -->
+								<div class="neu-btn p-4 rounded-xl flex items-start gap-4 cursor-pointer group">
+									<div class="w-16 h-12 rounded-lg bg-cover bg-center shrink-0 shadow-inner"
+										data-alt="Abstract placeholder for news article thumbnail"
+										style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALJLEDA26tVy2Gllww4budvD2-hQo19Lhxs7bAnzTL6jdrfBv1WndmR1oNwm5UnTAJj8Vc5fN_7NE03TdUHYneDxzjQBaV_576_ZFWCxUOEUqKguaD1aLYnVhSg7qirKCuqt5dCP-TthS-d5iD1I4jXX33GYhehMwDCb1AyZ4ei3aDqUB2SqrjqapTa2Tjq0kKODpSiy3XBhQYYDqoSJO1izROwkWd6qwghFqqpnD9BPChr2WT9ZJHz-9KOxTSRTbJI3P8dF1bPbPI');">
+									</div>
+									<div class="flex-1 min-w-0">
+										<div class="flex justify-between items-start">
+											<h4
+												class="text-sm font-bold text-slate-700 truncate group-hover:text-primary transition-colors">
+												Nouvelles Normes DPE 2024</h4>
+											<span
+												class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-600">Publié</span>
+										</div>
+										<p class="text-xs text-slate-400 mt-1 line-clamp-1">Mise à jour des critères
+											d'évaluation énergétique pour les bâtiments résidentiels.</p>
+										<div class="mt-2 flex gap-3 text-xs text-slate-400">
+											<span class="flex items-center gap-1"><span
+													class="material-symbols-outlined text-[14px]">visibility</span>
+												1.2k</span>
+											<span class="flex items-center gap-1"><span
+													class="material-symbols-outlined text-[14px]">schedule</span>
+												2j</span>
+										</div>
+									</div>
+								</div>
+								<!-- Content Item 2 -->
+								<div class="neu-btn p-4 rounded-xl flex items-start gap-4 cursor-pointer group">
+									<div class="w-16 h-12 rounded-lg bg-cover bg-center shrink-0 shadow-inner"
+										data-alt="Abstract placeholder for guide thumbnail"
+										style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBeiAQNyapjbzuIBWJlX2GMvkq1xFvGZlSFz3Hlj6kI8eAfYDYrLnqN9_8ccp5B_WAEuIZkCvgYuiMlrIRBShidjLXdYEDTxw8WwZn7nBHf3CPEImnUABFGx9tCCET-xl3y3ezuDxRzOsvfLLcHV7HwUwGv7aM1nJvrHrYt8EyOqx8ElNu6i7r6Sd6WawHS7-kzDqzQlwDEAQ06d77tZIZmuj35S7CF55CPGjPWeW5aR8UOKJLXtylx4cBNmQDnh0Co8tjXq69ttWJR');">
+									</div>
+									<div class="flex-1 min-w-0">
+										<div class="flex justify-between items-start">
+											<h4
+												class="text-sm font-bold text-slate-700 truncate group-hover:text-primary transition-colors">
+												Guide Isolation Extérieure</h4>
+											<span
+												class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-600">Brouillon</span>
+										</div>
+										<p class="text-xs text-slate-400 mt-1 line-clamp-1">Tutoriel complet sur les
+											matériaux isolants recommandés.</p>
+										<div class="mt-2 flex gap-3 text-xs text-slate-400">
+											<span class="flex items-center gap-1"><span
+													class="material-symbols-outlined text-[14px]">edit</span> Jean
+												D.</span>
+											<span class="flex items-center gap-1"><span
+													class="material-symbols-outlined text-[14px]">schedule</span>
+												5h</span>
+										</div>
+									</div>
+								</div>
+								<button
+									class="w-full text-center py-2 text-xs font-bold text-primary hover:underline">Voir
+									tout le contenu</button>
+							</div>
+						</div>
+						<!-- SECTION: SYSTEM SETTINGS -->
+						<div class="neu-card p-6 flex flex-col gap-6">
+							<div class="flex items-center gap-3">
+								<div
+									class="size-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+									<span class="material-symbols-outlined">tune</span>
+								</div>
+								<h3 class="text-lg font-bold text-slate-700">Paramètres Système</h3>
+							</div>
+							<div class="flex flex-col gap-5">
+								<!-- Toggle Item -->
+								<div class="flex items-center justify-between">
+									<div class="flex flex-col">
+										<span class="text-sm font-bold text-slate-700">Mode Maintenance</span>
+										<span class="text-xs text-slate-400">Suspendre l'accès utilisateur</span>
+									</div>
+									<label class="relative inline-flex items-center cursor-pointer">
+										<input class="sr-only peer" type="checkbox" value="" />
+										<div
+											class="w-11 h-6 neu-toggle-bg peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary/10 peer-checked:after:bg-primary peer-checked:after:shadow-[0_0_8px_#638fe9]">
+										</div>
+									</label>
+								</div>
+								<!-- Toggle Item -->
+								<div class="flex items-center justify-between">
+									<div class="flex flex-col">
+										<span class="text-sm font-bold text-slate-700">Inscriptions Publiques</span>
+										<span class="text-xs text-slate-400">Autoriser les nouveaux comptes</span>
+									</div>
+									<label class="relative inline-flex items-center cursor-pointer">
+										<input checked="" class="sr-only peer" type="checkbox" value="" />
+										<div
+											class="w-11 h-6 neu-toggle-bg peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary/10 peer-checked:after:bg-primary peer-checked:after:shadow-[0_0_8px_#638fe9]">
+										</div>
+									</label>
+								</div>
+								<hr class="border-slate-200/50" />
+								<!-- Input Item -->
+								<div class="flex flex-col gap-2">
+									<label class="text-sm font-bold text-slate-700">Email Système</label>
+									<div class="flex items-center neu-input rounded-xl px-3 h-10">
+										<span class="material-symbols-outlined text-slate-400 text-[18px]">mail</span>
+										<input
+											class="bg-transparent border-none text-sm w-full text-slate-600 ml-2 focus:ring-0"
+											type="email" value="system@renovenergy.com" />
+									</div>
+								</div>
+								<!-- Action Buttons -->
+								<div class="flex gap-3 mt-2">
+									<button
+										class="flex-1 neu-btn py-2.5 rounded-xl text-xs font-bold text-slate-600">Journal
+										d'Audit</button>
+									<button
+										class="flex-1 neu-btn py-2.5 rounded-xl text-xs font-bold text-slate-600">Sauvegarder</button>
+								</div>
+							</div>
+						</div>
+					</div> <!-- End Grid -->
+				</div>
+			</div>
+		</main>
+	</div>
+</body>
+
+</html>

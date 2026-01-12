@@ -1,0 +1,46 @@
+{% extends 'batimentRenovation/base.html' %}
+
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/about.css' %}" /> {% endblock %}
+
+{% block content %}
+    <main class="about-main">
+        <div class="about-content-wrapper">
+            <!-- Hero Section -->
+            <section class="about-hero">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQNMRVqXLoyVMEq3Yzein968-o7367ffoQo4MPWK9BckFbwpRB68RC2pbODDkHgztgo1YJLjgYMQMXNTqpwfQj9yNhi4QBpyTi82W_QrMALkkYSdQF9y6tXrFug-u-7zt-iEjODTqzz2YvH0iSUK2UvvBbBrZD8gYAt4Ab8UAcj5NuPmNDqYuZiE3l-_Bt6HGxr7bJJKoShIswDVR-dfwax1FlNOOkRrsqr9ywrZt8CisP6_yn9aMTOKxAZT31rcaHGBn3qaSNWhsj"
+                    class="about-hero-bg" alt="Background pattern">
+                <div class="about-hero-text">
+                    <h1 class="about-hero-title">Notre Engagement pour un Paris Durable</h1>
+                    <p class="about-hero-desc">Nous aidons les propriétaires et les copropriétés à transformer leurs
+                        bâtiments pour un avenir plus vert et plus économique.</p>
+                </div>
+            </section>
+
+            <!-- Detailed Mission -->
+            <section class="about-mission">
+                <div class="about-mission-text">
+                    <h2 class="font-heading text-3xl sm:text-4xl mb-6">Qui sommes-nous ?</h2>
+                    <p class="about-mission-desc">RenovateEnergy est une initiative dédiée à la rénovation
+                        énergétique accélérée dans la métropole parisienne. Notre plateforme centralise les données,
+                        les aides et les professionnels pour simplifier chaque étape de votre projet.</p>
+                    <div class="about-stats-grid">
+                        <div class="about-stat-card">
+                            <h3 class="about-stat-value">1500+</h3>
+                            <p class="about-stat-label">Bâtiments analysés</p>
+                        </div>
+                        <div class="about-stat-card">
+                            <h3 class="about-stat-value">20</h3>
+                            <p class="about-stat-label">Arrondissements couverts</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-mission-image-container">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1ZelqNMgOyQzBvsdvD3zaU_qsELiArUNg6idz2b1HtN7dTE-Du9Kpq1n_EUrDtSRHWhjLSiIrAk6nNhdCli9mGDd7DXnHsxEQRnv4pkU697K53-nY7x2eSYj9uzn52iboHDirOBA06gPhm3tNe1uPX5njEJFwYRh_hMcCp4e6EjGetR_bJ1cQbA0w69GT3hToknXGJNbUhwE0q5eWG0_7JO_iBDSGxwBSooc5pZaESEjSCNRYS1qaqzrau4kzY6B41b0qTNsnJLkm"
+                        class="about-mission-image" alt="Solar panels">
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,267 @@
+{% load static %}
+
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - RenovateEnergy</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="dashboard-sidebar-header">
+                <a href="{% url 'home' %}" class="dashboard-brand">
+                    <span class="material-symbols-outlined dashboard-brand-icon">energy_savings_leaf</span>
+                    <h1 class="dashboard-brand-name">RenovateEnergy</h1>
+                </a>
+            </div>
+
+            <nav class="dashboard-nav">
+                <a href="{% url 'dashboard' %}" class="dashboard-nav-item active">
+                    <span class="material-symbols-outlined dashboard-nav-icon">dashboard</span>
+                    <span class="dashboard-nav-text">Dashboard</span>
+                </a>
+
+                <div>
+                    <button class="dashboard-accordion-btn" onclick="toggleAccordion(this)">
+                        <div>
+                            <span class="material-symbols-outlined dashboard-nav-icon">apartment</span>
+                            <span>Bâtiments Rénovés</span>
+                        </div>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dashboard-accordion-content">
+                        <a href="?year=ALL" class="dashboard-accordion-item">Toutes les années</a>
+                        <a href="?year=2025" class="dashboard-accordion-item">2025</a>
+                        <a href="?year=2024" class="dashboard-accordion-item">2024</a>
+                        <a href="?year=2023" class="dashboard-accordion-item">2023</a>
+                        <a href="?year=2022" class="dashboard-accordion-item">2022</a>
+                        <a href="?year=2021" class="dashboard-accordion-item">2021</a>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="dashboard-accordion-btn" onclick="toggleAccordion(this)">
+                        <div>
+                            <span class="material-symbols-outlined dashboard-nav-icon">construction</span>
+                            <span>Types de Rénovation</span>
+                        </div>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dashboard-accordion-content">
+                        <a href="?type=ALL" class="dashboard-accordion-item">Tous les types</a>
+                        <a href="?type=ISOLATION" class="dashboard-accordion-item">Isolation</a>
+                        <a href="?type=CHAUFFAGE" class="dashboard-accordion-item">Chauffage</a>
+                        <a href="?type=VENTILATION" class="dashboard-accordion-item">Ventilation</a>
+                        <a href="?type=MENUISERIES" class="dashboard-accordion-item">Menuiseries</a>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="dashboard-accordion-btn" onclick="toggleAccordion(this)">
+                        <div>
+                            <span class="material-symbols-outlined dashboard-nav-icon">bolt</span>
+                            <span>Classe DPE</span>
+                        </div>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dashboard-accordion-content">
+                        <a href="?dpe=ALL" class="dashboard-accordion-item">Toutes les classes</a>
+                        <a href="?dpe=A" class="dashboard-accordion-item">Classe A</a>
+                        <a href="?dpe=B" class="dashboard-accordion-item">Classe B</a>
+                        <a href="?dpe=C" class="dashboard-accordion-item">Classe C</a>
+                        <a href="?dpe=D" class="dashboard-accordion-item">Classe D</a>
+                        <a href="?dpe=E" class="dashboard-accordion-item">Classe E</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <div class="dashboard-header-content">
+                    <h2 class="dashboard-title">Tableau de Bord</h2>
+                    <div class="dashboard-user">
+                        <span class="dashboard-user-name"><a href="{% url 'admin-page' %}">Admin</a></span>
+                        <div class="dashboard-user-avatar">A</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Volume Charts -->
+            <div class="dashboard-card">
+                <div class="dashboard-card-header">
+                    <h3 class="dashboard-card-title">Volume de Logements Rénovés par Arrondissement (Privé)</h3>
+                </div>
+
+                <div class="dashboard-chart-wrapper">
+                    <div class="dashboard-chart-section">
+                        <div id="chartPrivate" style="width: 100%; height: 100%"></div>
+                    </div>
+                    <div class="dashboard-list-section">
+                        <ul class="dashboard-data-list" id="listPrivate"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dashboard-card-header">
+                    <h3 class="dashboard-card-title">Logements Sociaux Rénovés par Arrondissement</h3>
+                </div>
+
+                <div class="dashboard-chart-wrapper">
+                    <div class="dashboard-chart-section">
+                        <div id="chartSocial" style="width: 100%; height: 100%"></div>
+                    </div>
+                    <div class="dashboard-list-section">
+                        <ul class="dashboard-data-list" id="listSocial"></ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Accordion toggle
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+            const isOpen = content.classList.contains('open');
+
+            if (isOpen) {
+                content.classList.remove('open');
+                btn.classList.remove('open');
+            } else {
+                content.classList.add('open');
+                btn.classList.add('open');
+            }
+        }
+
+        // --- Mock Data simulating what Django would return ---
+        const donutColors = [
+            "#3B82F6", "#6366F1", "#8B5CF6", "#A855F7", "#D946EF",
+            "#EC4899", "#F43F5E", "#EF4444", "#F97316", "#f59e0b",
+            "#EAB308", "#84CC16", "#22C55E", "#10B981", "#06B6D4",
+            "#0EA5E9", "#2563EB", "#4F46E5", "#7C3AED", "#9333EA"
+        ];
+
+        // Sample function to generate random data for demo purposes
+        function generateData(baseValue) {
+            const data = [];
+            let total = 0;
+            for (let i = 1; i <= 20; i++) {
+                // Add suffix for arrondissement display
+                const suffix = i === 1 ? 'er' : 'e';
+                const name = i + suffix + " Arr.";
+
+                // Random value based on index to verify charts change
+                const value = Math.floor(Math.random() * baseValue) + 50;
+                total += value;
+
+                data.push({
+                    name: name,
+                    value: value,
+                    color: donutColors[(i - 1) % donutColors.length],
+                    percent: 0 // placeholder
+                });
+            }
+
+            // Calc percents
+            data.forEach(item => {
+                item.percent = ((item.value / total) * 100).toFixed(1);
+            });
+
+            // Sort by value descending for better visualization
+            return data.sort((a, b) => b.value - a.value);
+        }
+
+        // Mocking the Python logic result for Private and Social data
+        const privateData = generateData(450); // ~50-500 renovations per district
+        const socialData = generateData(300);  // ~50-350 renovations per district
+
+        // --- Chart Rendering Logic ---
+
+        // Common Chart Options Builder
+        function createDonutChart(elementId, data) {
+            const options = {
+                series: data.map(d => d.value),
+                chart: {
+                    type: 'donut',
+                    height: '100%',
+                    fontFamily: 'Inter, sans-serif',
+                    redrawOnParentResize: true
+                },
+                labels: data.map(d => d.name),
+                colors: data.map(d => d.color),
+                legend: { show: false },
+                dataLabels: { enabled: false },
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            size: '65%',
+                            labels: {
+                                show: true,
+                                name: { show: true, fontSize: '22px', fontFamily: 'Inter, sans-serif', fontWeight: 600, color: undefined, offsetY: -10 },
+                                value: { show: true, fontSize: '16px', fontFamily: 'Inter, sans-serif', fontWeight: 400, color: undefined, offsetY: 16, formatter: function (val) { return val } },
+                                total: { show: true, showAlways: true, label: 'Total', fontSize: '22px', fontFamily: 'Inter, sans-serif', fontWeight: 600, color: '#373d3f', formatter: function (w) { return w.globals.seriesTotals.reduce((a, b) => a + b, 0) } }
+                            }
+                        }
+                    }
+                },
+                tooltip: {
+                    y: {
+                        formatter: function (val) {
+                            return val + " rénovations"
+                        }
+                    }
+                }
+            };
+
+            const chart = new ApexCharts(document.querySelector(elementId), options);
+            chart.render();
+        }
+
+        // Render Charts
+        createDonutChart("#chartPrivate", privateData);
+        createDonutChart("#chartSocial", socialData);
+
+        // --- List Rendering Logic ---
+        function populateList(listId, data) {
+            const list = document.getElementById(listId);
+            // Show top 8 for demo to fit UI nicely
+            data.slice(0, 8).forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'dashboard-data-item';
+                li.innerHTML = `
+                    <div class="dashboard-data-label">
+                        <div class="dashboard-data-color" style="background-color: ${item.color}"></div>
+                        <span>${item.name}</span>
+                    </div>
+                    <div>
+                        <span class="dashboard-data-value">${item.value.toLocaleString()}</span>
+                        <span class="dashboard-data-percent">(${item.percent}%)</span>
+                    </div>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        populateList('listPrivate', privateData);
+        populateList('listSocial', socialData);
+
+    </script>
+</body>
+
+</html>

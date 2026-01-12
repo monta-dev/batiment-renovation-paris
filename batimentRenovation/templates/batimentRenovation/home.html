@@ -1,0 +1,257 @@
+{% extends 'batimentRenovation/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <main class="home-main">
+        <div class="home-page">
+            <!-- Hero Section -->
+            <div class="home-hero">
+                <img alt="Illustration of a modern, energy-efficient home surrounded by nature" class="home-hero-bg"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2ytGmjIQnAkKp22mgIyIWqwqKFRKlEjb8_J1RehDz7inT7Vs9o8GUppP5t6QkEVIvaoWKnSnjDnLWwt63UVUC4-FqvtHkXp0jX5Db7XVoHi9frNplhzWKouqg2NzOh8GiFyERx4B6-7x9sb19reiIxkKbjt1-vIGSxzUbIxUCsOtsohVNUXe6M9wdXIFSKemiF31sQxJSldflcyktoOsQg16uj73cQasuXLr0nHZ0aCCeS-LGr8N2H4N0EOIFUJkTt1m3EoX3h1Z6" />
+                <div class="home-hero-overlay"></div>
+                <div class="home-hero-content">
+                    <div class="home-hero-inner">
+                        <h1 class="home-hero-title">Rénovez votre maison, illuminez votre avenir.</h1>
+                        <p class="home-hero-description">Analysez, planifiez et financez vos rénovations
+                            énergétiques avec notre plateforme intuitive.</p>
+                        <a href="dashboard.html" class="home-hero-cta">Lancer l'Analyse</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 Key Features Cards -->
+            <div class="home-features">
+                <div class="home-features-grid">
+                    <a class="home-feature-card" href="{% url 'dashboard' %}">
+                        <div class="home-feature-bg home-feature-bg-lavender"></div>
+                        <div class="home-feature-content">
+                            <div class="home-feature-icon-wrapper home-feature-icon-lavender">
+                                <span class="material-symbols-outlined home-feature-icon">apartment</span>
+                            </div>
+                            <h3 class="home-feature-title">Bâtiments Rénovés</h3>
+                            <p class="home-feature-description">Visualisez les projets de rénovation terminés.</p>
+                        </div>
+                    </a>
+                    <a class="home-feature-card" href="{% url 'dashboard' %}">
+                        <div class="home-feature-bg home-feature-bg-pink"></div>
+                        <div class="home-feature-content">
+                            <div class="home-feature-icon-wrapper home-feature-icon-pink">
+                                <span class="material-symbols-outlined home-feature-icon">construction</span>
+                            </div>
+                            <h3 class="home-feature-title">Types de Rénovation</h3>
+                            <p class="home-feature-description">Explorez les différentes catégories de travaux
+                                réalisés.</p>
+                        </div>
+                    </a>
+                    <a class="home-feature-card" href="{% url 'dashboard' %}">
+                        <div class="home-feature-bg home-feature-bg-blue"></div>
+                        <div class="home-feature-content">
+                            <div class="home-feature-icon-wrapper home-feature-icon-blue">
+                                <span class="material-symbols-outlined home-feature-icon">bar_chart_4_bars</span>
+                            </div>
+                            <h3 class="home-feature-title">Classe DPE</h3>
+                            <p class="home-feature-description">Analysez la performance énergétique des bâtiments.
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mission Section -->
+            <div class="home-mission">
+                <img alt="Soft, abstract green and blue pattern evoking nature" class="home-mission-bg"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQNMRVqXLoyVMEq3Yzein968-o7367ffoQo4MPWK9BckFbwpRB68RC2pbODDkHgztgo1YJLjgYMQMXNTqpwfQj9yNhi4QBpyTi82W_QrMALkkYSdQF9y6tXrFug-u-7zt-iEjODTqzz2YvH0iSUK2UvvBbBrZD8gYAt4Ab8UAcj5NuPmNDqYuZiE3l-_Bt6HGxr7bJJKoShIswDVR-dfwax1FlNOOkRrsqr9ywrZt8CisP6_yn9aMTOKxAZT31rcaHGBn3qaSNWhsj" />
+                <div class="home-mission-content">
+                    <h2 class="home-mission-title">Notre Objectif, Notre Mission</h2>
+                    <div class="home-mission-items">
+                        <div class="home-mission-item">
+                            <div class="home-mission-icon-wrapper">
+                                <span class="material-symbols-outlined home-mission-icon">lightbulb</span>
+                            </div>
+                            <div>
+                                <h4 class="home-mission-item-title">Objectif</h4>
+                                <p class="home-mission-item-description">Notre objectif: offrir une plateforme
+                                    claire et intuitive pour visualiser l'état de rénovation énergétique des
+                                    bâtiments parisiens.</p>
+                            </div>
+                        </div>
+                        <div class="home-mission-item">
+                            <div class="home-mission-icon-wrapper">
+                                <span class="material-symbols-outlined home-mission-icon">data_exploration</span>
+                            </div>
+                            <div>
+                                <h4 class="home-mission-item-title">Axes de Présentation</h4>
+                                <p class="home-mission-item-description">Notre présentation de données s'articule
+                                    autour de 3 axes essentiels: suivi de rénovation des bâtiments analysés, des
+                                    types de travaux réalisés, visualiser les classes énergétiques DPE.</p>
+                            </div>
+                        </div>
+                        <div class="home-mission-item">
+                            <div class="home-mission-icon-wrapper">
+                                <span class="material-symbols-outlined home-mission-icon">flag</span>
+                            </div>
+                            <div>
+                                <h4 class="home-mission-item-title">Mission</h4>
+                                <p class="home-mission-item-description">Notre mission: rendre ces données
+                                    accessible et intelligible pour les professionnels, collectivités et décideurs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Us Section -->
+            <div class="home-about">
+                <img alt="Illustration of energy efficient elements like windmills and solar panels in a green landscape"
+                    class="home-about-bg"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1ZelqNMgOyQzBvsdvD3zaU_qsELiArUNg6idz2b1HtN7dTE-Du9Kpq1n_EUrDtSRHWhjLSiIrAk6nNhdCli9mGDd7DXnHsxEQRnv4pkU697K53-nY7x2eSYj9uzn52iboHDirOBA06gPhm3tNe1uPX5njEJFwYRh_hMcCp4e6EjGetR_bJ1cQbA0w69GT3hToknXGJNbUhwE0q5eWG0_7JO_iBDSGxwBSooc5pZaESEjSCNRYS1qaqzrau4kzY6B41b0qTNsnJLkm" />
+
+                <div class="home-about-content">
+                    <h2 class="home-about-title">À Propos de Nous</h2>
+                    <p class="home-about-description">Investir dans la rénovation énergétique, c'est bien plus
+                        qu'une simple mise à niveau. C'est un choix intelligent pour votre portefeuille, votre
+                        confort et la planète.</p>
+                    <div class="home-about-features">
+                        <div class="home-about-feature">
+                            <div class="home-about-icon-wrapper home-about-icon-wrapper-pink">
+                                <span class="material-symbols-outlined text-dark-text">savings</span>
+                            </div>
+                            <div>
+                                <h4 class="home-about-feature-title">Économies durables</h4>
+                                <p class="home-about-feature-text">Réduisez vos factures d'énergie jusqu'à 70% et
+                                    augmentez la valeur de votre bien.</p>
+                            </div>
+                        </div>
+                        <div class="home-about-feature">
+                            <div class="home-about-icon-wrapper home-about-icon-wrapper-blue">
+                                <span class="material-symbols-outlined text-dark-text">home_health</span>
+                            </div>
+                            <div>
+                                <h4 class="home-about-feature-title">Confort amélioré</h4>
+                                <p class="home-about-feature-text">Profitez d'une température idéale toute l'année
+                                    et d'un air intérieur plus sain.</p>
+                            </div>
+                        </div>
+                        <div class="home-about-feature">
+                            <div class="home-about-icon-wrapper home-about-icon-wrapper-lavender">
+                                <span class="material-symbols-outlined text-dark-text">eco</span>
+                            </div>
+                            <div>
+                                <h4 class="home-about-feature-title">Geste pour la planète</h4>
+                                <p class="home-about-feature-text">Diminuez votre empreinte carbone et participez à
+                                    la transition énergétique.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="home-about-image-container">
+                    <img alt="Lush green leaves with soft sunlight filtering through, symbolizing nature and energy."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHmzXpFVfAlNnATwX2oh9TjBajanHovFvbvoF_XOMW0U4xCEeKxbLEqr_6lk85Bpf8ZPrPIObcJbtKMALuP3_6IM_poy6S_x1zpnMAaL2xEWDIrdvZLaDWEXKWk5nL6ZvQhogCrujF0ATtOICmbC1kQQPbS-dgZANQ4iacpaIiJa6WvF90K9KOSJvVCHGPqVZvJKkh2KJZ3QGWiVNqqJrSvMQ0oc9czwqoBBSw4-Iqs7TI7l94vCTW0GYHc4yg82DbTUGWx2hwdemx" />
+                    <div class="home-about-overlay"></div>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="home-team">
+                <div class="home-team-header">
+                    <h2 class="home-team-title">Notre Équipe</h2>
+                    <p class="home-team-description">Des experts passionnés dédiés à la réussite de votre transition
+                        énergétique.</p>
+                </div>
+                <div class="home-team-grid">
+                    <!-- Sophie Martin -->
+                    <div class="home-team-card">
+                        <div class="home-team-avatar-container">
+                            <div class="home-team-avatar-inset">
+                                <img alt="Portrait de Sophie Martin" class="home-team-avatar"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXp6uY50JM2jyI6x9Jzo6vbqOc9n_6RJYm_RB5P-65B19btneGbgkA0w6Z9RxmYk99OB_VegTBU51cDAoby74r2PQA89bGAWf_i3kJ8Vd_AdIsDwfbgkOzWkYMyAyQOMyw_slQMIL1ZjmXLahJavj4Bd-lyBNDtDYAIRiuWwQK8GjoVxmQA9droCaolf1JqYR2R2fEK9B8N7ukWMmafKyW1nl5EnKt72fXZFy5YYQ2GgFMRu1_f5h4IilHv31FLffFZ5Kn1tACntyC" />
+                            </div>
+                        </div>
+                        <h3 class="home-team-name">Sophie Martin</h3>
+                        <p class="home-team-role">RESPONSABLE OA</p>
+                        <div class="home-team-socials">
+                            <a class="home-team-social-link" href="#"><span
+                                    class="material-symbols-outlined home-team-social-icon">mail</span></a>
+                            <a class="home-team-social-link" href="#"><span
+                                    class="material-symbols-outlined home-team-social-icon">call</span></a>
+                            <a class="home-team-social-link" href="#"><img alt="linkedin"
+                                    class="home-team-social-icon"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvxITUs7B0lfZXlhGPWUIwr-wcHhYSfM2Ne65ZlqBO1BxKB-3Gx2qja3RXhGR4YTyKcNw4DeMGMj2fE3WXbzv9QvhrY5OGrR9zu4ghY4b17vdGciFISypJm8ugQP6acEnnnOHd34tY3j-oopo2gBE3Vp7M12F-GbDtTYfJsBNyaNdDX56O2HrA3H0gOGmj613cLzA6dNM0RL92u6rOToI-_ai7-TSTsLS0jArqCStegQ-AN09Nem-bPinxLb5qbI3rrjHodRkoqaTZ" /></a>
+                        </div>
+                        <button class="home-team-btn"><span class="material-symbols-outlined">download</span>
+                            CV</button>
+                    </div>
+                    <!-- Thomas Dubois -->
+                    <div class="home-team-card">
+                        <div class="home-team-avatar-container">
+                            <div class="home-team-avatar-inset">
+                                <img alt="Portrait de Thomas Dubois" class="home-team-avatar"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHGY6KK6KaQixhBTaf2ZjRgSvxxZTCvnX8DnNmWQD5wLPCz-Lh0LzPLAq8IiObuVBZs_u5YQ36PeayS8-x1laAGjGnTPj7r60dmMYggNilGH2iLg0KNJLRS6tr3ehLrc4C1QoP0r6sbpup5nz7jHnGcdskCoJNFZRONpknCBoG2oGxEO9o5SenNngZWWcRbBWWZ2l8dllP0eyBJMv9egAKTuDJkNf-BsGFxL_oEdznCwRe5S2hG5N6m808Q1QEWV8jBFvsWR9Aeevx" />
+                            </div>
+                        </div>
+                        <h3 class="home-team-name">Thomas Dubois</h3>
+                        <p class="home-team-role">CHEF DE PROJET</p>
+                        <div class="home-team-socials">
+                            <a class="home-team-social-link" href="#"><span
+                                    class="material-symbols-outlined home-team-social-icon">mail</span></a>
+                            <a class="home-team-social-link" href="#"><span
+                                    class="material-symbols-outlined home-team-social-icon">call</span></a>
+                            <a class="home-team-social-link" href="#"><img alt="linkedin"
+                                    class="home-team-social-icon"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgEzi_pCrPMV_plp4Ozn7fl64u950MReSZ5-cDnIXSfBYbhXBXPr3mDCUGRYufq7orE3xFBhLuj5ewVvpIz_eeY0W48vS6kFmyq39fMwehuft_qNChyJPi8TNrieTQhXWHXTKElW7f-nmeVskXulVp4ayX2xtj8oUx-_Y-yKTZ-USKfFoXqYQxWGR_VUYQOtiiaOMqm6Vx7cz694KIQq1ZBlkTRo_-c8yWNHVT--y3ZlorDT1EA3o-ZgNff4820iqaGHgiKZkLQlZY" /></a>
+                        </div>
+                        <button class="home-team-btn"><span class="material-symbols-outlined">download</span>
+                            CV</button>
+                    </div>
+                    <!-- Julien Lefevre -->
+                    <div class="home-team-card">
+                        <div class="home-team-avatar-container">
+                            <div class="home-team-avatar-inset">
+                                <img alt="Portrait de Julien Lefevre" class="home-team-avatar"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3X2zfVhvUreC0aVPWhPjeNypHiCm6-XR7W_7ZGDgWJRA5_V0j41ilZP-M8szuewrmRwTL3It2Q0raVdN7uy44Ad27OLKvQn2vrteT9INGKl_2Q_q5jQ60jtFNVfGtdrC5hzcN9pZxcV1DPvqb1B09t_8ekM2dZ0LEq-I8QFEggFmJmqSsw651Gl4W9qLvsY2N09LF62wgln8qmams0Q3UK6dc4vTyZ9XJrkPV_84CSnAyTNHFQszlk380I-JYDRXLmTxrhp1o4HJc" />
+                            </div>
+                        </div>
+                        <h3 class="home-team-name">Julien Lefevre</h3>
+                        <p class="home-team-role">DEV BACK-END</p>
+                        <div class="home-team-socials">
+                            <a class="home-team-social-link" href="#"><span
+                                    class="material-symbols-outlined home-team-social-icon">mail</span></a>
+                            <a class="home-team-social-link" href="#"><span
+                                    class="material-symbols-outlined home-team-social-icon">call</span></a>
+                            <a class="home-team-social-link" href="#"><img alt="linkedin"
+                                    class="home-team-social-icon"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXNpNZ3Boec_TciF6YDytaD6DWTnoI3Uc1YiyW75b8lqwt7J93V4OoVW5YbJdCNiRXGMh3frm6PxAsCwhwTjVN0zxEXv4mCEaOkRygBKaZVMT6QEUhrkwi1XYjmXru3yDPfFu7NOgTOxE_S-0-zqk4baBazoplHq5KiwsDcsBcGU1BWne2NJZti2vrZCeTZz1NOdrBgfibyogs46QP9gcn7TB3jqI3xXN1LbjU-Kceq5a4j5P1FfrXNf9ViibXdnhzfiOqArUUt6z2" /></a>
+                        </div>
+                        <button class="home-team-btn"><span class="material-symbols-outlined">download</span>
+                            CV</button>
+                    </div>
+                    <!-- Nicolas Moreau -->
+                    <div class="home-team-card">
+                        <div class="home-team-avatar-container">
+                            <div class="home-team-avatar-inset">
+                                <img alt="Portrait de Nicolas Moreau" class="home-team-avatar"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLlAPnAPsEMoGDxPRDN4tNkfo1WWJyoOqTIt-fRQK6uojCurC6P7gGPRTk7TKnJYdW-8VlfZZmCtkB7GpapOO-DYYLgsMb6gND5qrnP4Tkm8Xv4CYFL6NtWfGCJg9Tlsy_fJJbhGwKFKZ2tEgP9o3XFD4dynJjG7S1xK3nxQJnBrWvbhCLTn9JFiSYRj2jQ4YRwZhMjWsG2eIZJPvp4x_If8ISlhOLKz8XZexbocvAbUsK0EmOHWcx8bCy7ydT_WtM88mMCokvgvyZ" />
+                            </div>
+                        </div>
+                        <h3 class="home-team-name">Nicolas Moreau</h3>
+                        <p class="home-team-role">CONCEPTEUR LOGICIEL</p>
+                        <div class="home-team-socials">
+                            <a class="home-team-social-link" href="#"><span
+                                    class="material-symbols-outlined home-team-social-icon">mail</span></a>
+                            <a class="home-team-social-link" href="#"><span
+                                    class="material-symbols-outlined home-team-social-icon">call</span></a>
+                            <a class="home-team-social-link" href="#"><img alt="linkedin"
+                                    class="home-team-social-icon"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6Q-t7Xta-CJg-rbR-2HtlTW8SERW_dtUXt9h40nlWzZRsaGYP1eQxz93cstHvF909voXbn0p-ECnzI8Eg8jg2cscqeMA9BvhGbbF_6p97tBA74uoacyGDId0rmKwXBgpLtCChVAzb_-ZL7vUxOoRyQuvLGWCjGRsTR0GdjfkzUMS_yvlDIOLUDZJDWyhFujDfjkStQO7ff__PXAITbunrCDlOwyvC1lipGE2nNNkLJ-HPLxPEmaUx4ElGofEFcRc50aLxbn1D8hhy" /></a>
+                        </div>
+                        <button class="home-team-btn"><span class="material-symbols-outlined">download</span>
+                            CV</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
