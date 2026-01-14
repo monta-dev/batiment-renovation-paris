@@ -66,26 +66,27 @@
             </form>
 
             <!-- Register Form -->
-            <form id="registerForm" class="auth-form hidden" onsubmit="return false">
+            <form id="registerForm" class="auth-form hidden" onsubmit="return false" methode="post">
+                {% csrf_token %}
                 <div class="form-field">
                     <label class="form-label">Email</label>
                     <div class="input-wrapper">
                         <span class="material-symbols-outlined input-icon">mail</span>
-                        <input type="email" class="auth-input" placeholder="votre@email.com">
+                        <input type="email" class="auth-input" placeholder="votre@email.com" name="email">
                     </div>
-                </div>
+                </div>  
                 <div class="form-field">
                     <label class="form-label">Mot de passe</label>
                     <div class="input-wrapper">
                         <span class="material-symbols-outlined input-icon">lock</span>
-                        <input type="password" class="auth-input" placeholder="••••••••">
+                        <input type="password" class="auth-input" placeholder="••••••••" name="password">
                     </div>
                 </div>
                 <div class="form-field">
                     <label class="form-label">Confirmer le mot de passe</label>
                     <div class="input-wrapper">
                         <span class="material-symbols-outlined input-icon">verified_user</span>
-                        <input type="password" class="auth-input" placeholder="••••••••">
+                        <input type="password" class="auth-input" placeholder="••••••••" name="confirm_passwpord">
                     </div>
                 </div>
                 <div class="submit-section">
@@ -120,6 +121,8 @@
             }
         }
     </script>
+   
+
 </body>
 
 </html>
