@@ -1,13 +1,13 @@
 {% extends 'accounts/base_auth.html' %}
-{% block title %}Connexion{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block content %}
 <div class="tab-container">
-    <a href="{% url 'login' %}" class="tab-btn active">Connexion</a>
-    <a href="{% url 'register' %}" class="tab-btn">Créer un compte</a>
+    <a href="{% url 'login' %}" class="tab-btn">Connexion</a>
+    <a href="{% url 'register' %}" class="tab-btn active">Créer un compte</a>
 </div>
 
-<form id="loginForm" class="auth-form" method="POST">
+<form id="registerForm" class="auth-form" method="POST">
     {% csrf_token %}
     <div class="form-field">
         <label class="form-label">Email</label>
@@ -23,11 +23,18 @@
             <input type="password" name="password" class="auth-input" placeholder="••••••••">
         </div>
     </div>
+    <div class="form-field">
+        <label class="form-label">Confirmer le mot de passe</label>
+        <div class="input-wrapper">
+            <span class="material-symbols-outlined input-icon">verified_user</span>
+            <input type="password" name="confirm_password" class="auth-input" placeholder="••••••••">
+        </div>
+    </div>
     <div class="submit-section">
-        <button type="submit" class="btn-submit">Se connecter</button>
+        <button type="submit" class="btn-submit">Créer un compte</button>
     </div>
     <p class="form-footer">
-        Pas encore de compte ? <a href="{% url 'register' %}">Créer un compte</a>
+        Déjà membre ? <a href="{% url 'login' %}">Se connecter</a>
     </p>
 </form>
 {% endblock %}
