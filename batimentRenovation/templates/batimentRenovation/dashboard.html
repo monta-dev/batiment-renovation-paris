@@ -1,0 +1,172 @@
+{% extends 'batimentRenovation/base_dashboard.html' %}
+
+{% block content %}
+<body data-page="dashboard">
+	<!-- Sidebar -->
+	<aside class="sidebar">
+		<div class="sidebar-header">
+			<a href="{% url 'home' %}" class="contact-brand">
+				<div class="contact-logo">
+					<span class="material-symbols-outlined">energy_savings_leaf</span>
+				</div>
+				<h2 class="contact-brand-title">RenovateEnergy</h2>
+			</a>
+		</div>
+
+		<nav class="nav-container" id="sidebarNav">
+			<!-- Vue Globale -->
+			<a href="#" class="nav-item active" data-view="overview">
+				<div class="accordion-content">
+					<span class="material-symbols-outlined icon-active">dashboard</span>
+					<span>Vue d'ensemble</span>
+				</div>
+			</a>
+
+			<!-- Section Bâtiments avec Filtres -->
+			<div class="accordion-section">
+				<button class="accordion-btn" data-view="batiment">
+					<div class="accordion-content">
+						<span class="material-symbols-outlined icon-inactive">apartment</span>
+						<span>Bâtiments Rénovés</span>
+					</div>
+					<span class="material-symbols-outlined icon-inactive text-sm transition-transform">expand_more</span>
+				</button>
+				<div class="submenu hidden" data-filter-group="batiment">
+					<a href="#" class="submenu-item selected"><span>Toutes les années</span></a>
+					<a href="#" class="submenu-item"><span>2024</span></a>
+					<a href="#" class="submenu-item"><span>2023</span></a>
+					<a href="#" class="submenu-item"><span>2022</span></a>
+				</div>
+			</div>
+
+			<!-- Section Types avec Filtres -->
+			<div class="accordion-section">
+				<button class="accordion-btn" data-view="types">
+					<div class="accordion-content">
+						<span class="material-symbols-outlined icon-inactive">construction</span>
+						<span>Types de Rénovation</span>
+					</div>
+					<span class="material-symbols-outlined icon-inactive text-sm transition-transform">expand_more</span>
+				</button>
+				<div class="submenu hidden" data-filter-group="types">
+					<a href="#" class="submenu-item selected"><span>Tous les types</span></a>
+					<a href="#" class="submenu-item"><span>Isolation</span></a>
+					<a href="#" class="submenu-item"><span>Chauffage</span></a>
+				</div>
+			</div>
+
+			<!-- Section DPE avec Filtres -->
+			<div class="accordion-section">
+				<button class="accordion-btn" data-view="dpe">
+					<div class="accordion-content">
+						<span class="material-symbols-outlined icon-inactive">bolt</span>
+						<span>Classe DPE</span>
+					</div>
+					<span class="material-symbols-outlined icon-inactive text-sm transition-transform">expand_more</span>
+				</button>
+				<div class="submenu hidden" data-filter-group="dpe">
+					<a href="#" class="submenu-item selected"><span>Toutes les classes</span></a>
+					<a href="#" class="submenu-item"><span>Classe A</span></a>
+					<a href="#" class="submenu-item"><span>Classe B</span></a>
+					<a href="#" class="submenu-item"><span>Classe C</span></a>
+				</div>
+			</div>
+		</nav>
+
+		<div class="sidebar-footer">
+			<a href="{% url 'admin-page' %}" class="nav-item">
+				<div class="accordion-content">
+					<span class="material-symbols-outlined">settings</span>
+					<span>Administration</span>
+				</div>
+			</a>
+		</div>
+	</aside>
+
+	<!-- Main Content -->
+	<main class="main-content">
+		<header class="mb-10 flex items-center justify-between">
+			<div class="flex flex-col">
+				<span class="text-xs font-bold text-slate-400 mb-1" id="viewSubtitle">Synthèse Interactive</span>
+				<h1 class="text-2xl font-bold text-slate-800" id="viewTitle">Tableau de Bord</h1>
+			</div>
+			<div class="flex items-center gap-6">
+				<div class="size-10 rounded-full border-2 border-slate-200 overflow-hidden cursor-pointer">
+					<img src="https://i.pravatar.cc/100?u=admin" class="w-full h-full object-cover">
+				</div>
+			</div>
+		</header>
+
+		<div id="dashboardContent" class="space-y-16">
+			<!-- Section Bâtiment -->
+			<section id="section-batiment" class="view-section">
+				<div class="flex items-center gap-3 mb-8">
+					<div class="neu-icon-btn"><span class="material-symbols-outlined text-primary">apartment</span></div>
+					<h2 class="text-xl font-bold text-slate-800">Bâtiments (Paris 1-20)</h2>
+				</div>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+					<div class="card p-6">
+						<h3 class="text-sm font-bold text-slate-500 mb-4 uppercase">Logements Privés</h3>
+						<div id="privateChart" style="height: 300px;"></div>
+					</div>
+					<div class="card p-6">
+						<h3 class="text-sm font-bold text-slate-500 mb-4 uppercase">Logements Sociaux</h3>
+						<div id="socialChart" style="height: 300px;"></div>
+					</div>
+				</div>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+					<div class="card p-6">
+						<div id="privateDonut" style="height: 300px;"></div>
+						<div id="privateListContainer" class="split-list-container mt-4"></div>
+					</div>
+					<div class="card p-6">
+						<div id="socialDonut" style="height: 300px;"></div>
+						<div id="socialListContainer" class="split-list-container mt-4"></div>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Section Types -->
+			<section id="section-types" class="view-section">
+				<div class="flex items-center gap-3 mb-8">
+					<div class="neu-icon-btn"><span class="material-symbols-outlined text-primary">construction</span></div>
+					<h2 class="text-xl font-bold text-slate-800">Types de Travaux</h2>
+				</div>
+				<div class="card p-6 mb-8">
+					<div id="typesBar" style="height: 350px;"></div>
+				</div>
+				<div class="card p-8">
+					<div class="volume-card-content">
+						<div class="chart-section">
+							<div id="typesDonut" style="height: 350px;"></div>
+						</div>
+						<div class="list-section">
+							<div id="typesList" class="split-list-container"></div>
+						</div>
+						</div>
+						</div>
+			</section>
+			
+			<!-- Section DPE -->
+			<section id="section-dpe" class="view-section">
+				<div class="flex items-center gap-3 mb-8">
+					<div class="neu-icon-btn"><span class="material-symbols-outlined text-primary">bolt</span></div>
+					<h2 class="text-xl font-bold text-slate-800">Performance DPE</h2>
+				</div>
+				<div class="card p-6 mb-8">
+					<div id="dpeBar" style="height: 350px;"></div>
+				</div>
+				<div class="card p-8">
+					<div class="volume-card-content">
+						<div class="chart-section">
+							<div id="dpeDonut" style="height: 350px;"></div>
+						</div>
+						<div class="list-section">
+							<div id="dpeList" class="split-list-container"></div>
+						</div>
+					</div>
+					</div>
+			</section>
+		</div>
+	</main>
+{% endblock %}

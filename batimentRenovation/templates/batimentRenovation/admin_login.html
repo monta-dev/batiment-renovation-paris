@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Connexion Administration - RenovateEnergy</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/admin_login.css">
+</head>
+
+<body class="login-body">
+
+    <div class="login-container">
+        <div class="brand-section">
+            <a href="home.html" class="brand-link">
+				<div class="brand-icon-wrapper">
+                    <span class="material-symbols-outlined brand-icon">energy_savings_leaf</span>
+                </div>
+                <h1 class="brand-title">RenovateEnergy</h1>
+            </a>
+        </div>
+
+		<div class="auth-card">
+			<span class="admin-badge">Portail Administrateur</span>
+			<h2 class="auth-header-title">Accès Sécurisé</h2>
+
+            <!-- Admin Login Form -->
+            <form id="adminLoginForm" class="auth-form" onsubmit="return false">
+                <div class="form-field">
+                    <label class="form-label">Identifiant Admin</label>
+                    <div class="input-wrapper">
+                        <span class="material-symbols-outlined input-icon">admin_panel_settings</span>
+                        <input type="text" class="auth-input" placeholder="Nom d'utilisateur" required>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label class="form-label">Mot de passe</label>
+                    <div class="input-wrapper">
+                        <span class="material-symbols-outlined input-icon">lock</span>
+                        <input type="password" class="auth-input" placeholder="••••••••" required>
+                    </div>
+                </div>
+                <div class="submit-section">
+					<a href="admin_page.html" class="btn-submit">
+                        Entrer dans le Dashboard
+                    </a>
+                </div>
+                <p class="form-footer">
+                    Accès restreint aux employés autorisés.
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

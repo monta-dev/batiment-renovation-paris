@@ -1,0 +1,48 @@
+{% extends 'batimentRenovation/base.html' %}
+
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/about.css' %}" /> {% endblock %}
+
+{% block about-active %}active{% endblock %}
+
+{% block content %}
+	<main class="about-main">
+		<!-- Hero Section -->
+		<section class="about-hero">
+			<div class="about-hero-overlay"></div>
+			<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQNMRVqXLoyVMEq3Yzein968-o7367ffoQo4MPWK9BckFbwpRB68RC2pbODDkHgztgo1YJLjgYMQMXNTqpwfQj9yNhi4QBpyTi82W_QrMALkkYSdQF9y6tXrFug-u-7zt-iEjODTqzz2YvH0iSUK2UvvBbBrZD8gYAt4Ab8UAcj5NuPmNDqYuZiE3l-_Bt6HGxr7bJJKoShIswDVR-dfwax1FlNOOkRrsqr9ywrZt8CisP6_yn9aMTOKxAZT31rcaHGBn3qaSNWhsj"
+				class="about-hero-img" alt="Background pattern">
+			<div class="about-hero-content">
+				<h1 class="about-hero-title">Notre Engagement pour un Paris Durable</h1>
+				<p class="about-text">Nous aidons les propriétaires et les copropriétés à transformer leurs bâtiments pour un
+					avenir plus vert et plus économique.</p>
+			</div>
+		</section>
+
+		<!-- Detailed Mission Grid -->
+		<section class="about-grid">
+			<div class="about-content">
+				<h2 class="about-content-title">Qui sommes-nous ?</h2>
+				<p class="about-text">RenovateEnergy est une initiative dédiée à la rénovation énergétique accélérée dans la
+					métropole parisienne. Notre plateforme centralise les données, les aides et les professionnels pour
+					simplifier chaque étape de votre projet.</p>
+		
+				<div class="about-stats-container">
+					<div class="about-stat-card">
+						<span class="about-stat-value">1500+</span>
+						<span class="about-stat-label">Bâtiments analysés</span>
+					</div>
+					<div class="about-stat-card">
+						<span class="about-stat-value">20</span>
+						<span class="about-stat-label">Arrondissements</span>
+					</div>
+					</div>
+					</div>
+			<div class="about-image-frame">
+				<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1ZelqNMgOyQzBvsdvD3zaU_qsELiArUNg6idz2b1HtN7dTE-Du9Kpq1n_EUrDtSRHWhjLSiIrAk6nNhdCli9mGDd7DXnHsxEQRnv4pkU697K53-nY7x2eSYj9uzn52iboHDirOBA06gPhm3tNe1uPX5njEJFwYRh_hMcCp4e6EjGetR_bJ1cQbA0w69GT3hToknXGJNbUhwE0q5eWG0_7JO_iBDSGxwBSooc5pZaESEjSCNRYS1qaqzrau4kzY6B41b0qTNsnJLkm"
+					alt="Solar panels">
+			</div>
+			</section>
+	</main>
+{% endblock %}

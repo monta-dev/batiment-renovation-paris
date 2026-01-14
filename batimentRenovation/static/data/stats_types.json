@@ -1,0 +1,7 @@
+[
+  { "type": "Isolation Thermique", "count": 12500, "percentage": 35 },
+  { "type": "Chauffage / EnR", "count": 8900, "percentage": 25 },
+  { "type": "Ventilation", "count": 5400, "percentage": 15 },
+  { "type": "Menuiseries", "count": 7100, "percentage": 20 },
+  { "type": "Audit Énergétique", "count": 1800, "percentage": 5 }
+]

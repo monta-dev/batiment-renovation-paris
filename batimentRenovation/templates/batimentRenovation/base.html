@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<title>{% block title %}{% endblock %} - RenovateEnergy</title>
+	<!-- Design System Global -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+	<!-- Style Spécifique Page -->
+	{% block css %}{% endblock %}
+	<link href="https://fonts.googleapis.com" rel="preconnect" />
+	<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+		rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+		rel="stylesheet" />
+</head>
+<body class="contact-body"> <!-- Réutilisation du body standard -->
+
+	<header class="contact-header">
+		<div class="contact-header-inner">
+			<a href="{% url 'home' %}" class="contact-brand">
+				<div class="contact-logo">
+					<span class="material-symbols-outlined">energy_savings_leaf</span>
+				</div>
+				<h2 class="contact-brand-title">RenovateEnergy</h2>
+			</a>
+
+			<nav class="contact-nav">
+				<a href="{% url 'home' %}">Accueil</a>
+				<a class="{% block about-active %}{% endblock %}" href="{% url 'about' %}">À propos</a>
+				<a class="{% block contact-active %}{% endblock %}" href="{% url 'contact' %}">Contact</a>
+			</nav>
+
+			<div class="contact-actions">
+				<a href="{% url 'login' %}" class="contact-btn-secondary">Connexion</a>
+				<a href="{% url 'login' %}" class="contact-btn-primary">Inscription</a>
+			</div>
+			</div>
+			</header>
+
+        {% block content %}{% endblock %}
+
+        <footer class="home-footer" style="margin-top: 5rem;">
+		<!-- Réutilisation du footer standard de l'accueil -->
+		<div class="home-footer-container">
+			<div class="home-footer-grid"
+				style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+				<div class="home-footer-brand">
+					<a href="{% url 'home' %}" class="contact-brand">
+						<div class="contact-logo">
+							<span class="material-symbols-outlined">energy_savings_leaf</span>
+						</div>
+						<h2 class="contact-brand-title">RenovateEnergy</h2>
+						</a>
+						<p style="margin-top: 1rem; color: #64748b;">Simplifions ensemble la rénovation énergétique.</p>
+				</div>
+				<div>
+					<h4 style="margin-bottom: 1.5rem;">Navigation</h4>
+					<ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+						<li><a href="{% url 'home' %}" style="text-decoration: none; color: #64748b;">Accueil</a></li>
+						<li><a href="{% url 'about' %}" style="text-decoration: none; color: #64748b;">À propos</a></li>
+						<li><a href="{% url 'contact' %}" style="text-decoration: none; color: #64748b;">Contact</a></li>
+					</ul>
+				</div>
+				<div>
+					<h4 style="margin-bottom: 1.5rem;">Légal</h4>
+					<ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+						<li><a href="#" style="text-decoration: none; color: #64748b;">Mentions Légales</a></li>
+						<li><a href="#" style="text-decoration: none; color: #64748b;">Confidentialité</a></li>
+					</ul>
+				</div>
+				</div>
+			<div
+				style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #d1d9e6; text-align: center; color: #94a3b8; font-size: 0.875rem;">
+				© 2026 RenovateEnergy. Tous droits réservés.
+			</div>
+			</div>
+			</footer>
+</body>
+
+</html>
