@@ -1,100 +1,123 @@
 {% load static %}
 
-    <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
-
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Rénovation de Bâtiments</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .success-message {
-            background-color: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Contact - RenovateEnergy</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
+    <!-- Charger les CSS dans le bon ordre -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
 </head>
-<body>
-    <div class="container">
-        <h1>Contactez-nous</h1>
-        
-        <!-- Afficher le message de succès -->
-        {% if messages %}
-            {% for message in messages %}
-                <div class="success-message">
-                    {{ message }}
+
+<body class="contact-body">
+
+    <header class="contact-header">
+        <div class="contact-header-inner">
+            <a href="{% url 'home' %}" class="contact-brand">
+                <div class="contact-logo">
+                    <span class="material-symbols-outlined">energy_savings_leaf</span>
                 </div>
-            {% endfor %}
-        {% endif %}
+                <h2 class="contact-brand-title">RenovateEnergy</h2>
+            </a>
+
+            <nav class="contact-nav">
+                <a href="{% url 'home' %}">Accueil</a>
+                <a href="#">À propos</a>
+                <a href="{% url 'contact' %}" class="active">Contact</a>
+            </nav>
+
+            <div class="contact-actions">
+                <a href="#" class="contact-btn-secondary">Connexion</a>
+                <a href="#" class="contact-btn-primary">Inscription</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contact-main">
+        <section class="contact-form-section">
+            <h1 class="contact-form-title">Contactez-nous</h1>
+            
+            <!-- Afficher les messages de succès -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 12px; margin-bottom: 20px; box-shadow: -4px -4px 10px #ffffff, 4px 4px 10px #d1d9e6;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            
+            <div class="contact-form-card">
+            
+                <form class="contact-form" method="post">
+                    {% csrf_token %}
+                    
+                    <div class="contact-form-row">
+                        <input class="contact-input" type="text" id="nom" name="nom" placeholder="Votre Nom" required>
+                        <input class="contact-input" type="email" id="email" name="email" placeholder="Votre Email" required>
+                    </div>
+                    
+                    <textarea class="contact-textarea" id="message" name="message" placeholder="Votre Message" required></textarea>
+                    
+                    <div class="contact-submit-wrapper">
+                        <button type="submit" class="contact-submit-btn">Envoyer le message</button>
+                    </div>
+                </form>
+            </div>
+            <h2 class="team-title">Notre Équipe</h2>
+            <div class="team-title-underline"></div>
+
+            <div class="team-grid">
+                <!-- Sophie -->
+                <article class="team-card">
+                    <div class="team-avatar-wrapper">
+                        <img src="https://i.pravatar.cc/300?u=sophie" class="team-avatar" alt="Sophie Martin">
+                    </div>
+                    <h3 class="team-name">Sophie Martin</h3>
+                    <span class="team-role">Responsable QA</span>
+                    <button class="team-btn">Voir CV</button>
+                </article>
+
+                <!-- Thomas -->
+                <article class="team-card">
+                    <div class="team-avatar-wrapper">
+                        <img src="https://i.pravatar.cc/300?u=thomas" class="team-avatar" alt="Thomas Dubois">
+                    </div>
+                    <h3 class="team-name">Thomas Dubois</h3>
+                    <span class="team-role">Chef de projet</span>
+                    <button class="team-btn">Voir CV</button>
+                </article>
+
+                <!-- Julien -->
+                <article class="team-card">
+                    <div class="team-avatar-wrapper">
+                        <img src="https://i.pravatar.cc/300?u=julien" class="team-avatar" alt="Julien Lefevre">
+                    </div>
+                    <h3 class="team-name">Julien Lefevre</h3>
+                    <span class="team-role">Dev Back-end</span>
+                    <button class="team-btn">Voir CV</button>
+                </article>
+
+                <!-- Nicolas -->
+                <article class="team-card">
+                    <div class="team-avatar-wrapper">
+                        <img src="https://i.pravatar.cc/300?u=nicolas" class="team-avatar" alt="Nicolas Moreau">
+                    </div>
+                    <h3 class="team-name">Nicolas Moreau</h3>
+                    <span class="team-role">Concepteur logiciel</span>
+                    <button class="team-btn">Voir CV</button>
+                </article>
+            </div>
         
-        <form method="post">
-            {% csrf_token %}
-            
-            <div class="form-group">
-                <label for="nom">Nom complet :</label>
-                <input type="text" id="nom" name="nom" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="message">Votre message :</label>
-                <textarea id="message" name="message" rows="6" required></textarea>
-            </div>
-            
-            <button type="submit">Envoyer le message</button>
-        </form>
-    </div>
+        </section>
+    </main>
+
 </body>
+
 </html>

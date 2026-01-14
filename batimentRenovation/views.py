@@ -7,8 +7,17 @@ def index(request):
 def login(request):
    return render(request, 'batimentRenovation/login.html')
 
-def accueil(request):
+def Accueil(request):
     return render(request, 'batimentRenovation/dashboard.html')
+
+def dash_bat(request):
+    return render(request, 'batimentRenovation/dashboard_batiment.html')
+
+def dash_dpe(request):
+    return render(request, 'batimentRenovation/dashboard_dpe.html')
+
+def dash_types(request):
+    return render(request, 'batimentRenovation/dashboard_types.html')
 
 def contact(request):
     return render(request, 'batimentRenovation/contact.html')

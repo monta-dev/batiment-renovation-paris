@@ -1,0 +1,67 @@
+body {
+    background-color: #EEF2F6; /* Pastel Sky Blue / Soft Greyish Blue */
+}
+
+/* Neumorphic Utilities */
+.neu-card {
+    background-color: #EEF2F6;
+    box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+    border-radius: 1rem;
+    border: 1px solid rgba(255,255,255,0.4);
+}
+
+.neu-btn {
+    background-color: #EEF2F6;
+    box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;
+    transition: all 0.2s ease;
+}
+
+.neu-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff;
+}
+
+.neu-btn:active {
+    transform: translateY(0);
+    box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;
+}
+
+.neu-btn-primary {
+    background-color: #638fe9;
+    color: white;
+    box-shadow: 5px 5px 15px rgba(99, 143, 233, 0.4), -5px -5px 10px #ffffff;
+    transition: all 0.2s ease;
+}
+
+.neu-btn-primary:hover {
+    background-color: #5580e0;
+    box-shadow: 6px 6px 18px rgba(99, 143, 233, 0.5), -6px -6px 12px #ffffff;
+}
+
+.neu-input {
+    background-color: #EEF2F6;
+    box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;
+    border: none;
+}
+
+.neu-input:focus {
+    outline: none;
+    box-shadow: inset 4px 4px 8px #cbd4e3, inset -4px -4px 8px #ffffff;
+}
+
+.neu-toggle-bg {
+    background-color: #EEF2F6;
+    box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;
+}
+
+/* Scrollbar custom styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #EEF2F6; 
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1; 
+    border-radius: 10px;
+}

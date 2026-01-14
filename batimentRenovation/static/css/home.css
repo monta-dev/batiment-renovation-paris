@@ -155,26 +155,14 @@
 
 /* Main Content */
 .home-main {
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  margin-top: 2rem;
 }
 
 @media (min-width: 640px) {
   .home-main {
     padding: 2rem 1.5rem;
-    margin-top: 3rem;
-  }
-}
-
-.home-page > div:not(:first-child) {
-  margin-top: 4rem;
-}
-
-@media (min-width: 768px) {
-  .home-page > div:not(:first-child) {
-    margin-top: 6rem;
   }
 }
 
@@ -285,7 +273,7 @@
   display: inline-block;
   box-shadow: 0 4px 14px rgba(155, 184, 243, 0.3);
   transition: all 0.2s;
-  margin-top: 1rem;
+  margin-top: 1rem;    width: 17%;
 }
 
 .home-hero-cta:hover {

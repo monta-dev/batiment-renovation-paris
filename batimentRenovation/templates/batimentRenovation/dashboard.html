@@ -1,18 +1,24 @@
 {% load static %}
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - RenovateEnergy</title>
-
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
    
+    <!-- 1. Styles de base (variables CSS et styles globaux) -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <!-- 2. Styles spécifiques au dashboard -->
+    <link rel="stylesheet" href="{% static 'css/dashboard-specific.css' %}">
+
+    <!-- ApexCharts pour les graphiques -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 

@@ -159,6 +159,7 @@
 }
 
 .auth-input {
+    box-sizing: border-box;
     background-color: rgba(240, 244, 250, 0.8);
     box-shadow: inset 7px 7px 14px #d4dae2, inset -7px -7px 14px #ffffff;
     transition: all 0.3s ease;
