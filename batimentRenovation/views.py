@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib import messages
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
-from .forms import ContactForm, LoginForm
+from .forms import ContactForm, LoginForm, SignupForm
 
 def index(request):
     return render(request, 'batimentRenovation/home.html')
@@ -28,28 +30,75 @@ def about(request):
 def contact(request):
     return render(request, 'batimentRenovation/contact.html')
 
+@require_http_methods(["GET", "POST"])
 def login(request):
-    message = ""
+    print("🔍 VUE login appelée - Method:", request.method)
+    mode = request.GET.get('mode', 'login')
+    print(f"🔍 Mode détecté: {mode}")
+    
     if request.method == "POST":
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            user = authenticate(
-                email=form.cleaned_data["email"],
-                password=form.cleaned_data["password"],
-            )
-            if user is not None:
-                auth_login(request, user)
-                return redirect('dashboard')
+        print("📤 POST détecté")
+        
+        if mode == 'register':
+            print("📝 Traitement INSCRIPTION")
+            form = SignupForm(request.POST)
+            if form.is_valid():
+                print("✅ Form Signup valide")
+                user = form.save()
+                print(f"✅ User créé: {user} (ID: {user.id}, email: {user.email})")
+                
+                # Vérif user actif
+                if user and user.is_active:
+                    auth_login(request, user)
+                    print("✅ Auto-login OK")
+                    messages.success(request, f"Compte créé ! Bienvenue {user.email}")
+                    return redirect('dashboard')
+                else:
+                    print(f"❌ User inactif: {user.is_active if user else 'None'}")
+                    messages.error(request, "Erreur création compte.")
             else:
-                message = "Identifiants invalides."
-    else:
-        form = LoginForm()
+                print("❌ Form Signup invalide:", form.errors)
+        
+        else:  # login
+            print("🔑 Traitement CONNEXION")
+            form = LoginForm(request.POST)
+            if form.is_valid():
+                print("✅ Form Login valide")
+                print(f"🔍 Tentative login: {form.cleaned_data['email']}")
+                
+                user = authenticate(
+                    request=request,
+                    username=form.cleaned_data["email"],  # username=email
+                    password=form.cleaned_data["password"],
+                )
+                print(f"🔍 Authenticate retourne: {user}")
+                
+                if user and user.is_active:
+                    auth_login(request, user)
+                    print("✅ Login OK")
+                    messages.success(request, f'Bonjour, {user.email} !')
+                    return redirect('dashboard')
+                else:
+                    print("❌ Login échoué - user inactif ou None")
+                    messages.error(request, "Identifiants invalides.")
+            else:
+                print("❌ Form Login invalide:", form.errors)
+    
+    # Affichage forms
+    login_form = LoginForm()
+    signup_form = SignupForm()
+    
+    context = {
+        'login_form': login_form,
+        'signup_form': signup_form,
+        'mode': mode,
+    }
+    print("📄 Render template avec context")
+    return render(request, 'batimentRenovation/login.html', context)
 
-    return render(
-        request,
-        "batimentRenovation/login.html",
-        {"form": form, "message": message},
-    )
+def logout(request):
+    auth_logout(request)
+    return redirect('login')
 
 def admin_page(request):
     return render(request, 'batimentRenovation/admin_page.html')

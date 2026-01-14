@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from . import views  # ← Importer les vues
 
 urlpatterns = [
@@ -12,5 +12,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
     path('admin_page/', views.admin_page, name='admin-page'),
 ]

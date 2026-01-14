@@ -124,3 +124,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+"""AUTHENTICATION_BACKENDS = [
+    'batimentRenovation.backends.EmailBackend',  # ← Ton backend
+    'django.contrib.auth.backends.ModelBackend',
+]
+"""

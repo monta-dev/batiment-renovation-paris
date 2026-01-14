@@ -39,98 +39,101 @@
             </div>
 
             <!-- Login Form -->
-            <form id="loginForm" class="auth-form" method="post">
-                {% csrf_token %}
+            <form id="loginForm" class="auth-form" method="post" action="{% url 'login' %}?mode=login">
+    {% csrf_token %}
+    {% for message in messages %}
+        <p class="form-message {{ message.tags }}">{{ message }}</p>
+    {% endfor %}
 
-                {% if message %}
-                <p class="form-message">{{ message }}</p>
-                {% endif %}
+    <div class="form-field">
+        <label class="form-label" for="{{ login_form.email.id_for_label }}">
+            {{ login_form.email.label }}
+        </label>
+        <div class="input-wrapper">
+            <span class="material-symbols-outlined input-icon">mail</span>
+            {{ login_form.email }}
+        </div>
+        {{ login_form.email.errors }}
+    </div>
 
-                {{ form.non_field_errors }}
+    <div class="form-field">
+        <label class="form-label" for="{{ login_form.password.id_for_label }}">
+            {{ login_form.password.label }}
+        </label>
+        <div class="input-wrapper">
+            <span class="material-symbols-outlined input-icon">lock</span>
+            {{ login_form.password }}
+        </div>
+        {{ login_form.password.errors }}
+    </div>
 
-                <div class="form-field">
-                    <label class="form-label" for="{{ form.email.id_for_label }}">Email</label>
-                    <div class="input-wrapper">
-                        <span class="material-symbols-outlined input-icon">mail</span>
-                        <!-- champ email du LoginForm -->
-                        <input
-                            type="email"
-                            name="{{ form.email.html_name }}"
-                            id="{{ form.email.id_for_label }}"
-                            class="auth-input"
-                            placeholder="votre@email.com"
-                            value="{{ form.email.value|default_if_none:'' }}"
-                            required
-                        >
-                    </div>
-                    {% for error in form.email.errors %}
-                    <p class="field-error">{{ error }}</p>
-                    {% endfor %}
-                </div>
-
-                <div class="form-field">
-                    <label class="form-label" for="{{ form.password.id_for_label }}">Mot de passe</label>
-                    <div class="input-wrapper">
-                        <span class="material-symbols-outlined input-icon">lock</span>
-                        <!-- champ password du LoginForm -->
-                        <input
-                            type="password"
-                            name="{{ form.password.html_name }}"
-                            id="{{ form.password.id_for_label }}"
-                            class="auth-input"
-                            placeholder="••••••••"
-                            required
-                        >
-                    </div>
-                    {% for error in form.password.errors %}
-                    <p class="field-error">{{ error }}</p>
-                    {% endfor %}
-                </div>
-
-                <div class="submit-section">
-                    <button type="submit" class="btn-submit">
-                        Se connecter
-                    </button>
-                </div>
-
-                <p class="form-footer">
-                    Pas encore de compte ?
-                    <a href="javascript:switchMode('register')">Créer un compte</a>
-                </p>
-            </form>
+    <div class="submit-section">
+        <button type="submit" class="btn-submit">Se connecter</button>
+    </div>
+</form>
 
             <!-- Register Form -->
-            <form id="registerForm" class="auth-form hidden" onsubmit="return false">
-                <div class="form-field">
-                    <label class="form-label">Email</label>
-                    <div class="input-wrapper">
-                        <span class="material-symbols-outlined input-icon">mail</span>
-                        <input type="email" class="auth-input" placeholder="votre@email.com">
-                    </div>
-                </div>
-                <div class="form-field">
-                    <label class="form-label">Mot de passe</label>
-                    <div class="input-wrapper">
-                        <span class="material-symbols-outlined input-icon">lock</span>
-                        <input type="password" class="auth-input" placeholder="••••••••">
-                    </div>
-                </div>
-                <div class="form-field">
-                    <label class="form-label">Confirmer le mot de passe</label>
-                    <div class="input-wrapper">
-                        <span class="material-symbols-outlined input-icon">verified_user</span>
-                        <input type="password" class="auth-input" placeholder="••••••••">
-                    </div>
-                </div>
-                <div class="submit-section">
-                    <button type="submit" class="btn-submit">
-                        Créer un compte
-                    </button>
-                </div>
-                <p class="form-footer">
-                    Déjà membre ? <a href="javascript:switchMode('login')">Se connecter</a>
-                </p>
-            </form>
+            <form id="registerForm" class="auth-form hidden" method="post" action="{% url 'login' %}?mode=register">
+    {% csrf_token %}
+    {% for message in messages %}
+        <p class="form-message {{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+
+    {{ signup_form.non_field_errors }}
+    
+    <!-- Email -->
+    <div class="form-field">
+        <label class="form-label" for="{{ signup_form.email.id_for_label }}">
+            {{ signup_form.email.label }}
+        </label>
+        <div class="input-wrapper">
+            <span class="material-symbols-outlined input-icon">mail</span>
+            {{ signup_form.email }}
+        </div>
+        {% for error in signup_form.email.errors %}
+            <p class="field-error">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+    <!-- Mot de passe -->
+    <div class="form-field">
+        <label class="form-label" for="{{ signup_form.password1.id_for_label }}">
+            Mot de passe
+        </label>
+        <div class="input-wrapper">
+            <span class="material-symbols-outlined input-icon">lock</span>
+            {{ signup_form.password1 }}
+        </div>
+        {% for error in signup_form.password1.errors %}
+            <p class="field-error">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+    <!-- Confirmation mot de passe -->
+    <div class="form-field">
+        <label class="form-label" for="{{ signup_form.password2.id_for_label }}">
+            Confirmer le mot de passe
+        </label>
+        <div class="input-wrapper">
+            <span class="material-symbols-outlined input-icon">verified_user</span>
+            {{ signup_form.password2 }}
+        </div>
+        {% for error in signup_form.password2.errors %}
+            <p class="field-error">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+    <!-- Rôle caché (User par défaut) -->
+    {{ signup_form.role }}
+
+    <div class="submit-section">
+        <button type="submit" class="btn-submit">Créer un compte</button>
+    </div>
+
+    <p class="form-footer">
+        Déjà membre ? <a href="javascript:switchMode('login')">Se connecter</a>
+    </p>
+</form>
         </div>
     </div>
 

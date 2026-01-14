@@ -1,6 +1,8 @@
 from django import forms
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
 from .models import ContactMessage
 
 class ContactForm(forms.ModelForm):
@@ -43,5 +45,49 @@ class ContactForm(forms.ModelForm):
         )
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(max_length=150, label="Email")
-    password = forms.CharField(max_length=63, widget=forms.PasswordInput, label="Mot de passe")
+    email = forms.EmailField(
+        max_length=150,
+        label="Email",
+        widget=forms.EmailInput(attrs={
+            'class': 'auth-input',
+            'placeholder': 'votre@email.com'
+        })
+    )
+    password = forms.CharField(
+        max_length=63,
+        label="Mot de passe",
+        widget=forms.PasswordInput(attrs={
+            'class': 'auth-input',
+            'placeholder': '••••••••'
+        })
+    )
+
+User = get_user_model()
+
+class SignupForm(UserCreationForm):
+    email = forms.EmailField(
+        max_length=150,
+        required=True,
+        label="Email",
+        widget=forms.EmailInput(attrs={
+            'class': 'auth-input',
+            'placeholder': 'votre@email.com'
+        })
+    )
+
+    class Meta:
+        model = User
+        fields = ['email']  # Seulement email (password1/2 auto UserCreationForm)
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        email = self.cleaned_data['email']
+        user.email = email
+        if not user.username:
+            user.username = email  # on aligne username sur email
+        # Rôle "User" par défaut (pas de champ role dans Meta)
+        if hasattr(user, 'role'):
+            user.role = 'User'
+        if commit:
+            user.save()
+        return user
