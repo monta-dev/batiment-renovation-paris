@@ -1,3 +1,9 @@
+/* 
+Syntax: CSS3 avec Glassmorphism (backdrop-filter) et Neumorphism.
+Role: Styles dédiés à l'interface de connexion administrative pour un aspect sécurisé et professionnel.
+Workflow: Définit une palette de couleurs spécifique à l'admin et structure la carte d'authentification centrale.
+*/
+
 /* --- ADMIN LOGIN PAGE - PURE CSS --- */
 
 :root {

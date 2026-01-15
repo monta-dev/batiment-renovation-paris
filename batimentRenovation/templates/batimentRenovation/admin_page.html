@@ -8,12 +8,8 @@
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<title>RenovEnergy - Admin Portal</title>
 	<link rel="stylesheet" href="{% static 'css/admin_page.css' %}" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-		rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
-		rel="stylesheet" />
-	<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+	<link href="{% static 'css/font.css' %}" rel="stylesheet" />
+    <script src="{% static 'js/cdn/cdn.tailwindcss.js' %}"></script>
 	<script id="tailwind-config">
 		tailwind.config = {
 			darkMode: "class",
@@ -57,22 +53,22 @@
 					<!-- Navigation -->
 					<nav class="flex flex-col gap-3">
 						<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 text-slate-500 hover:text-primary hover:bg-[#e4e9f2]"
-							href="{% url 'home' %}">
+							href="{% url 'dashboard' %}">
 							<span class="material-symbols-outlined" style="font-size: 24px;">dashboard</span>
 							<span class="text-sm font-semibold">Dashboard</span>
 						</a>
 						<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 text-slate-500 hover:text-primary hover:bg-[#e4e9f2]"
-							href="dashboard_batiment.html">
+							href="{% url 'dashboard-batiment' %}">
 							<span class="material-symbols-outlined" style="font-size: 24px;">apartment</span>
 							<span class="text-sm font-semibold">Bâtiments Rénovés</span>
 						</a>
 						<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 text-slate-500 hover:text-primary hover:bg-[#e4e9f2]"
-							href="dashboard_types.html">
+							href="{% url 'dashboard-types' %}">
 							<span class="material-symbols-outlined" style="font-size: 24px;">construction</span>
 							<span class="text-sm font-semibold">Types de Rénovation</span>
 						</a>
 						<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 text-slate-500 hover:text-primary hover:bg-[#e4e9f2]"
-							href="dashboard_dpe.html">
+							href="{% url 'dashboard-dpe' %}">
 							<span class="material-symbols-outlined" style="font-size: 24px;">description</span>
 							<span class="text-sm font-semibold">Classe DPE</span>
 						</a>

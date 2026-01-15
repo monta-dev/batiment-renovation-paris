@@ -1,3 +1,9 @@
+/* 
+Syntax: CSS3 avec Flexbox, Grid et effets de flou (backdrop-filter).
+Role: Styles spécifiques au tableau de bord, gérant la barre latérale rétractable, les conteneurs de graphiques et les mises en page responsives.
+Workflow: S'appuie sur les variables de style.css pour appliquer la charte graphique aux composants complexes du dashboard.
+*/
+
 /* Dashboard-specific Styles */
 
 /* Sidebar */

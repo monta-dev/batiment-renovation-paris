@@ -1,3 +1,9 @@
+/* 
+Syntax: CSS3 avec utilisation de variables et ombres Neumorphiques.
+Role: Styles spécifiques à la page "À Propos", incluant la section Hero, les grilles de mission et les cartes de statistiques.
+Workflow: Étend les styles de base pour créer une mise en page narrative et informative propre à la présentation de l'entreprise.
+*/
+
 /* --- ABOUT PAGE SPECIFIC STYLES --- */
 
 .about-main {

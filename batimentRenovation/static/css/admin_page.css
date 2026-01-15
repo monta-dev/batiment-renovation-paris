@@ -1,3 +1,9 @@
+/* 
+Syntax: CSS3 avec utilitaires de design Neumorphique (neu-card, neu-btn, neu-input).
+Role: Fournit les classes utilitaires système pour le portail d'administration.
+Workflow: Applique des effets d'ombre et de relief aux éléments de l'interface admin pour une expérience utilisateur tactile et moderne.
+*/
+
 body {
     background-color: #EEF2F6; /* Pastel Sky Blue / Soft Greyish Blue */
 }

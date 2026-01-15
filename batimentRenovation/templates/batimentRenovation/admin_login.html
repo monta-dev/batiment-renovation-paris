@@ -6,10 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Connexion Administration - RenovateEnergy</title>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="{% static 'css/font.css' %}" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/admin_login.css">
 </head>
@@ -18,7 +15,7 @@
 
     <div class="login-container">
         <div class="brand-section">
-            <a href="home.html" class="brand-link">
+            <a href="{% url 'home' %}" class="brand-link">
 				<div class="brand-icon-wrapper">
                     <span class="material-symbols-outlined brand-icon">energy_savings_leaf</span>
                 </div>
@@ -47,7 +44,7 @@
                     </div>
                 </div>
                 <div class="submit-section">
-					<a href="admin_page.html" class="btn-submit">
+					<a href="{% url 'admin-page' %}" class="btn-submit">
                         Entrer dans le Dashboard
                     </a>
                 </div>
