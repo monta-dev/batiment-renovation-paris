@@ -46,16 +46,23 @@ export async function fetchDashboardData(forceRefresh = false) {
   // 2. Fetch from Network
   console.log('🌐 [apiFetch] Fetching from network...'); // S: Journalisation console | R: Indique le lancement du fetch | W: Informe que le cache était absent ou invalide.
 
+  // Récupération des URLs depuis la configuration globale
+    const urls = window.DATA_URLS || {
+        buildings: '/static/data/stats_batiments.json',
+        types: '/static/data/stats_types.json',
+        dpe: '/static/data/stats_dpe.json'
+    };
+
   // We use Promise.allSettled to ensure that if one fails, others can still proceed.
   const results = await Promise.allSettled([
     // S: Appel asynchrone Promise.allSettled | R: Lance 3 requêtes en parallèle | W: Attend que toutes les promesses soient terminées (succès ou échec).
-    fetch('static/data/stats_batiments.json').then(
+    fetch(urls.buildings).then(
       (
         r // S: Appel Fetch | R: Récupère les stats bâtiments | W: Transforme la réponse en JSON si OK.
       ) => (r.ok ? r.json() : Promise.reject('Components Error')) // S: Opérateur ternaire | R: Valide la réponse HTTP | W: Rejette en cas d'erreur 404 ou 500.
     ), // S: Fin du premier élément du tableau
-    fetch('static/data/stats_types.json').then((r) => (r.ok ? r.json() : Promise.reject('Types Error'))), // S: Fetch pour les types de travaux | R: Récupère le JSON des types | W: Logique identique au premier fetch.
-    fetch('static/data/stats_dpe.json').then((r) => (r.ok ? r.json() : Promise.reject('DPE Error'))) // S: Fetch pour le DPE | R: Récupère le JSON DPE | W: Logique identique.
+    fetch(urls.types).then((r) => (r.ok ? r.json() : Promise.reject('Types Error'))), // S: Fetch pour les types de travaux | R: Récupère le JSON des types | W: Logique identique au premier fetch.
+    fetch(urls.dpe).then((r) => (r.ok ? r.json() : Promise.reject('DPE Error'))) // S: Fetch pour le DPE | R: Récupère le JSON DPE | W: Logique identique.
   ]); // S: Fin du tableau et de Promise.allSettled
 
   // 3. Process Results

@@ -79,6 +79,21 @@ class SignupForm(UserCreationForm):
         model = User
         fields = ['email']  # Seulement email (password1/2 auto UserCreationForm)
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Ajouter la classe CSS aux champs de mot de passe générés automatiquement
+        self.fields['password1'].widget.attrs.update({
+            'class': 'auth-input',
+            'placeholder': '••••••••'
+        })
+        self.fields['password2'].widget.attrs.update({
+            'class': 'auth-input',
+            'placeholder': '••••••••'
+        })
+        # Optionnel : personnaliser les labels
+        self.fields['password1'].label = "Mot de passe"
+        self.fields['password2'].label = "Confirmer le mot de passe"
+
     def save(self, commit=True):
         user = super().save(commit=False)
         email = self.cleaned_data['email']

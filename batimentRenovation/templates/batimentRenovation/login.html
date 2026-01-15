@@ -36,7 +36,7 @@
             </div>
 
             <!-- Login Form -->
-            <form id="loginForm" class="auth-form" method="post" action="{% url 'login' %}?mode=login">
+<form id="loginForm" class="auth-form" method="post" action="{% url 'login' %}?mode=login">
     {% csrf_token %}
     {% for message in messages %}
         <p class="form-message {{ message.tags }}">{{ message }}</p>
@@ -50,7 +50,9 @@
             <span class="material-symbols-outlined input-icon">mail</span>
             {{ login_form.email }}
         </div>
-        {{ login_form.email.errors }}
+        {% for error in login_form.email.errors %}
+            <p class="field-error">{{ error }}</p>
+        {% endfor %}
     </div>
 
     <div class="form-field">
@@ -61,16 +63,22 @@
             <span class="material-symbols-outlined input-icon">lock</span>
             {{ login_form.password }}
         </div>
-        {{ login_form.password.errors }}
+        {% for error in login_form.password.errors %}
+            <p class="field-error">{{ error }}</p>
+        {% endfor %}
     </div>
 
     <div class="submit-section">
         <button type="submit" class="btn-submit">Se connecter</button>
     </div>
+
+    <p class="form-footer">
+        Pas encore de compte ? <a href="javascript:switchMode('register')">Créer un compte</a>
+    </p>
 </form>
 
-            <!-- Register Form -->
-            <form id="registerForm" class="auth-form hidden" method="post" action="{% url 'login' %}?mode=register">
+<!-- Register Form -->
+<form id="registerForm" class="auth-form hidden" method="post" action="{% url 'login' %}?mode=register">
     {% csrf_token %}
     {% for message in messages %}
         <p class="form-message {{ message.tags }}">{{ message }}</p>
