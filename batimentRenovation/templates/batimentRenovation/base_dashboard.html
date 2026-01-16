@@ -16,6 +16,21 @@
 
 {% block content %}{% endblock %}
 
+<script type="module">
+    import { fetchDashboardData } from "{% static 'js/apiFetch.js' %}";
+    
+    // Configuration des URLs
+    window.DATA_URLS = {
+        buildings: "{% static 'data/stats_batiments.json' %}",
+        types: "{% static 'data/stats_types.json' %}",
+        dpe: "{% static 'data/stats_dpe.json' %}"
+    };
+    
+    // Utilisation
+    fetchDashboardData().then(data => {
+        console.log('Données chargées:', data);
+    });
+</script>
 <!-- Main Application Entry Point uses ES Modules -->
 	<script type="module" src="{% static 'js/controllers/mainController.js' %}"></script>
 </body>

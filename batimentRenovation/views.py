@@ -6,6 +6,7 @@ from django.views.decorators.http import require_http_methods
 from django.views.decorators.cache import cache_page
 from django.contrib.auth.decorators import login_required
 from .forms import ContactForm, LoginForm, SignupForm
+from .decorators import anonymous_required
 
 def index(request):
     return render(request, 'batimentRenovation/home.html')
@@ -34,6 +35,9 @@ def contact(request):
 
 @require_http_methods(["GET", "POST"])
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    
     print("🔍 VUE login appelée - Method:", request.method)
     mode = request.GET.get('mode', 'login')
     print(f"🔍 Mode détecté: {mode}")
