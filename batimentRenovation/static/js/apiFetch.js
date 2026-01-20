@@ -7,7 +7,9 @@ Workflow: Vérifie d'abord la validité d'un cache local. Si absent ou expiré, 
 // Data Fetching Service with Caching Strategy
 const CACHE_KEY = "RENOVATION_DASHBOARD_DATA"; // S: Constante de type String | R: Définit la clé unique pour le LocalStorage | W: Sert d'identifiant pour stocker et récupérer les données mises en cache.
 const CACHE_DURATION = 2 * 60 * 60 * 1000; // S: Expression arithmétique (2h en ms) | R: Définit la durée de vie du cache | W: Utilisée pour comparer l'âge du cache avec l'heure actuelle.
-const apiBatimentRenovates = 'http://127.0.0.1:8000/api/Batiment_renovates/';
+const apiBatimentRenovates = "http://127.0.0.1:8000/api/Batiment_renovates/";
+const apiEnergyClasses = "http://127.0.0.1:8000/api/energy-classes/";
+const apiRenovationTypes = "http://127.0.0.1:8000/api/Renovation-types/";
 /**
  * Fetches all necessary dashboard data from distinct sources.
  * Uses LocalStorage for caching to minimize network requests.
@@ -50,11 +52,11 @@ export async function fetchDashboardData(forceRefresh = false) {
 
   // Récupération des URLs depuis la configuration globale
   debugger;
-    const urls = window.DATA_URLS || {
-      buildings: apiBatimentRenovates,
-      types: '/static/data/stats_types.json',
-      dpe: '/static/data/stats_dpe.json',
-    };
+  const urls = window.DATA_URLS || {
+    buildings: apiBatimentRenovates,
+    types: apiRenovationTypes,
+    dpe: apiEnergyClasses,
+  };
 
   // We use Promise.allSettled to ensure that if one fails, others can still proceed.
   const results = await Promise.allSettled([
