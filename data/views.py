@@ -48,9 +48,10 @@ def get_Batiment_renovates(request):
             "social": 7500,
         },
     ]
-
-    data_json = [
-        Batiment_renovatedDTO.from_dict(item).__dict__ for item in RAW_DATA_DISTRICTS
-    ]
+    dtos = [Batiment_renovatedDTO.from_dict(item) for item in RAW_DATA_DISTRICTS]
+    data_json = [dto.__dict__ for dto in dtos]
+    # data_json = [
+    #     Batiment_renovatedDTO.from_dict(item).__dict__ for item in RAW_DATA_DISTRICTS
+    # ]
 
     return JsonResponse(data_json, safe=False)
