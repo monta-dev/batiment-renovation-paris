@@ -20,6 +20,7 @@ class RenovationTypeDTO:
 class Batiment_renovatedDTO:
     name: str
     total: int
+    renovated: int
     private_renovated: int
     social_renovated: int
 
@@ -28,6 +29,7 @@ class Batiment_renovatedDTO:
         return cls(
             name=data.get("name", "Inconnu"),
             total=data.get("total", 0),
+            renovated=data.get("renovated", 0),
             private_renovated=data.get("private_renovated", 0),
             social_renovated=data.get("social_renovated", 0),
         )
